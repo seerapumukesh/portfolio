@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a 45% query speedup actually took — Mukesh Seerapu</title>
+<meta name="description" content="A breakdown of the clustering, warehouse sizing, and transformation changes behind a Snowflake migration's performance gain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#articles">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+  </div>
+</header>
+
+<main class="article-detail">
+  <a href="../index.html#articles" class="back-link">&#8592; Back to writing</a>
+  <span class="article-tag">Performance</span>
+  <h1>What a 45% query speedup actually took</h1>
+  <p class="article-meta">May 2026 · Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      "Improved query performance by 45%" is the kind of line that shows up on
+      a resume without the work behind it. In practice it wasn't one change —
+      it was three separate, smaller fixes that compounded, found by actually
+      reading query profiles instead of guessing.
+    </p>
+
+    <h2>1. Clustering keys that matched real filter patterns</h2>
+    <p>
+      The original migration copied table structures over close to as-is from
+      SQL Server. Snowflake's micro-partitioning rewards clustering on the
+      columns queries actually filter and join on — in this case, date and a
+      regional key — which cut the amount of data scanned per query
+      significantly on the largest fact tables.
+    </p>
+
+    <h2>2. Warehouse sizing per workload, not one size for everything</h2>
+    <p>
+      Running ad-hoc analyst queries and scheduled dbt transformation jobs on
+      the same warehouse meant either paying for idle compute or queuing
+      behind long-running jobs. Splitting into separate warehouses sized for
+      each workload, with auto-suspend tuned aggressively, removed most of the
+      queuing delay analysts were seeing.
+    </p>
+
+    <h2>3. Materializing the transformations that got queried the most</h2>
+    <p>
+      A handful of dbt models were being recomputed as views on every query
+      because they were built for correctness first. Converting the ones with
+      heavy read traffic into incremental tables — refreshed on schedule
+      instead of on every read — moved that cost out of the interactive query
+      path entirely.
+    </p>
+
+    <h2>What mattered most</h2>
+    <p>
+      None of these three individually was dramatic. What made a visible,
+      reportable difference was doing all three together and measuring before
+      and after with the same representative query set, rather than assuming
+      any single change was "the fix."
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="sheet footer-inner">
+    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
+    <a href="../index.html" class="footer-top">&#8592; All writing</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

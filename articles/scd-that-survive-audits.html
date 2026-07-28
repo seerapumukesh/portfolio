@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designing Slowly Changing Dimensions that survive audits — Mukesh Seerapu</title>
+<meta name="description" content="Notes on SCD Type 2 modeling patterns for regulated financial data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#articles">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+  </div>
+</header>
+
+<main class="article-detail">
+  <a href="../index.html#articles" class="back-link">&#8592; Back to writing</a>
+  <span class="article-tag">Data Modeling</span>
+  <h1>Designing Slowly Changing Dimensions that survive audits</h1>
+  <p class="article-meta">March 2026 · Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      Regulated financial data has a habit of exposing lazy dimension modeling. A
+      customer's address changes, a credit tier gets recalculated, an account
+      status flips — and six months later an auditor asks what the record looked
+      like on a specific date. If your warehouse only ever holds the current
+      state, that question has no good answer.
+    </p>
+
+    <h2>Why Type 2 earns its complexity</h2>
+    <p>
+      SCD Type 2 keeps every version of a row with effective and expiry dates,
+      so a report run "as of" a past date reconstructs exactly what was true
+      then. It costs more storage and more transformation logic than simply
+      overwriting rows, but for anything touching compliance reporting, that
+      cost is the whole point — it's what makes the history defensible.
+    </p>
+
+    <h2>Where it actually breaks in practice</h2>
+    <ul>
+      <li>Late-arriving source data that needs to be inserted retroactively into an already-closed date range</li>
+      <li>Multiple source systems disagreeing on when a change "actually" happened</li>
+      <li>Surrogate keys that aren't stable across a full reload, silently breaking history joins</li>
+      <li>Tests that check row counts but never check that effective-dated ranges don't overlap</li>
+    </ul>
+
+    <h2>What held up under review</h2>
+    <p>
+      The pattern that survived an actual compliance review combined dbt
+      snapshots for the mechanical Type 2 tracking with explicit tests asserting
+      no overlapping date ranges per natural key, plus a small reconciliation
+      job that flagged any record where the source system's own "last modified"
+      timestamp didn't line up with when we recorded the change. That gap
+      between "when it changed" and "when we saw it change" is usually where
+      audit questions land.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="sheet footer-inner">
+    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
+    <a href="../index.html" class="footer-top">&#8592; All writing</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

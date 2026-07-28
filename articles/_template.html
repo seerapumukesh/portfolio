@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article Title — Mukesh Seerapu</title>
+<meta name="description" content="One-sentence summary of the article for search results and link previews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#articles">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+  </div>
+</header>
+
+<main class="article-detail">
+  <a href="../index.html#articles" class="back-link">&#8592; Back to writing</a>
+  <span class="article-tag">Tag Here</span>
+  <h1>Article Title Goes Here</h1>
+  <p class="article-meta">Month Year · Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      Opening paragraph. Set up the problem or question this article addresses,
+      in plain, specific terms — what broke, what you were trying to do, or
+      what you noticed in practice.
+    </p>
+
+    <h2>A subheading</h2>
+    <p>
+      Body paragraph. Replace this with your actual write-up.
+    </p>
+    <ul>
+      <li>Key point one</li>
+      <li>Key point two</li>
+      <li>Key point three</li>
+    </ul>
+
+    <h2>Another subheading</h2>
+    <p>
+      Closing paragraph — what you'd do differently next time, or what to
+      watch out for.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="sheet footer-inner">
+    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
+    <a href="../index.html" class="footer-top">&#8592; All writing</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

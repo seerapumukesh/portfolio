@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Airflow DAGs vs. cron: what actually changes at scale — Mukesh Seerapu</title>
+<meta name="description" content="A field comparison from replacing cron-based scheduling with dependency-aware Airflow orchestration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#articles">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+  </div>
+</header>
+
+<main class="article-detail">
+  <a href="../index.html#articles" class="back-link">&#8592; Back to writing</a>
+  <span class="article-tag">Orchestration</span>
+  <h1>Airflow DAGs vs. cron: what actually changes at scale</h1>
+  <p class="article-meta">January 2026 · Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      Cron works fine right up until job #12 depends on job #7 finishing, job
+      #7 depends on a file landing from an external partner, and that file
+      shows up late twice a month. At that point you're not scheduling jobs
+      anymore — you're guessing at timing and padding every start time with
+      buffer minutes that either aren't enough or waste hours.
+    </p>
+
+    <h2>The real shift isn't the UI</h2>
+    <p>
+      The dashboard is nice, but the change that mattered was moving from
+      "run at this time" to "run after these things are true." Airflow's
+      dependency graph meant a late upstream file delayed only what actually
+      depended on it, instead of an entire fixed schedule sliding or silently
+      running on stale data.
+    </p>
+
+    <h2>What improved measurably</h2>
+    <ul>
+      <li>Fewer 2am pages for jobs that "ran" but processed incomplete data</li>
+      <li>Failures became visible per-task instead of buried in one script's log output</li>
+      <li>Retries and backfills stopped being manual, one-off scripts</li>
+      <li>New pipelines took hours to wire in, not days, since most sensors and operators were reusable</li>
+    </ul>
+
+    <h2>What it costs you</h2>
+    <p>
+      Orchestration infrastructure is now a system you have to run and monitor
+      in its own right — a scheduler, a metadata database, worker capacity.
+      For a handful of independent jobs with no real dependencies, cron is
+      still the right, boring answer. The switch pays off specifically when
+      job count and inter-dependency both grow past what one person can hold
+      in their head.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="sheet footer-inner">
+    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
+    <a href="../index.html" class="footer-top">&#8592; All writing</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -7,119 +7,150 @@
 <meta name="description" content="Mukesh Seerapu — Senior Data Engineer. Cloud data platforms, ETL/ELT pipelines, and lakehouse architecture across financial services and e-commerce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand">
-      <span class="nav-brand-mark">&gt;</span>mukesh_seerapu
-    </a>
+    <a href="#top" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#experience"><span class="idx">01</span>experience</a>
-      <a href="#projects"><span class="idx">02</span>projects</a>
-      <a href="#skills"><span class="idx">03</span>skills</a>
-      <a href="#articles"><span class="idx">04</span>articles</a>
-      <a href="#contact"><span class="idx">05</span>contact</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#articles">Writing</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-resume" href="Mukesh_Seerapu_Data_Engineer.pdf" download>
-      resume <span class="arrow">&#8595;</span>
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <a class="nav-resume" href="Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <main>
 
-  <!-- ============ HERO / SCHEMA MAP ============ -->
+  <!-- ============ HERO — blueprint sheet ============ -->
   <section class="hero" id="top">
-    <div class="hero-inner">
+    <div class="sheet hero-sheet">
 
-      <p class="eyebrow">// data_engineer.profile</p>
-      <h1 class="hero-title">
-        I build the pipelines<br>
-        <span class="hero-title-accent">your dashboards trust.</span>
-      </h1>
-      <p class="hero-sub">
-        Senior Data Engineer with 10+ years designing cloud-based data platforms, ETL/ELT pipelines,
-        and lakehouse architecture across financial services, banking, and e-commerce.
-        Currently at Dupaco Credit Union, Dubuque, IA.
-      </p>
-
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View projects</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <div class="hero-topline">
+        <span>DWG NO. DE&#8209;2026&#8209;01</span>
+        <span>DATA PLATFORM ARCHITECTURE — GENERAL ARRANGEMENT</span>
+        <span>SHEET 1 OF 1</span>
       </div>
 
-      <!-- Entity relationship map: PROFILE (1) --- (N) EXPERIENCE / PROJECTS / SKILLS / ARTICLES -->
-      <div class="schema-map" aria-hidden="false" role="img" aria-label="Diagram: one PROFILE record relates to many rows in EXPERIENCE, PROJECTS, SKILLS, and ARTICLES">
-
-        <div class="table-card table-card--profile">
-          <div class="table-card-head">
-            <span class="table-dot"></span>PROFILE
-          </div>
-          <ul class="table-rows">
-            <li><span class="col-name">id</span><span class="col-key">PK</span></li>
-            <li><span class="col-name">name</span><span class="col-type">varchar</span></li>
-            <li><span class="col-name">role</span><span class="col-type">varchar</span></li>
-            <li><span class="col-name">location</span><span class="col-type">varchar</span></li>
-            <li><span class="col-name">years_exp</span><span class="col-type">int → 10+</span></li>
-            <li><span class="col-name">status</span><span class="col-type">open to relocation</span></li>
-          </ul>
+      <div class="hero-copy">
+        <p class="eyebrow">// senior_data_engineer</p>
+        <h1 class="hero-title">I design the systems<br><span class="hero-title-accent">that move your data.</span></h1>
+        <p class="hero-sub">
+          10+ years building cloud data platforms, ETL/ELT pipelines, and lakehouse
+          architecture across financial services, banking, and e-commerce. Currently
+          at Dupaco Credit Union, Dubuque, IA.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
         </div>
-
-        <div class="connector-h" aria-hidden="true"></div>
-
-        <ul class="branches">
-          <li class="branch">
-            <a href="#experience" class="table-card table-card--mini">
-              <div class="table-card-head"><span class="table-dot table-dot--mint"></span>EXPERIENCE</div>
-              <p class="mini-desc"><span class="col-key">FK</span> profile_id &middot; 6 roles</p>
-            </a>
-          </li>
-          <li class="branch">
-            <a href="#projects" class="table-card table-card--mini">
-              <div class="table-card-head"><span class="table-dot table-dot--mint"></span>PROJECTS</div>
-              <p class="mini-desc"><span class="col-key">FK</span> profile_id &middot; 6 shipped</p>
-            </a>
-          </li>
-          <li class="branch">
-            <a href="#skills" class="table-card table-card--mini">
-              <div class="table-card-head"><span class="table-dot table-dot--mint"></span>SKILLS</div>
-              <p class="mini-desc"><span class="col-key">FK</span> profile_id &middot; 30+ tools</p>
-            </a>
-          </li>
-          <li class="branch">
-            <a href="#articles" class="table-card table-card--mini">
-              <div class="table-card-head"><span class="table-dot table-dot--mint"></span>ARTICLES</div>
-              <p class="mini-desc"><span class="col-key">FK</span> profile_id &middot; writing</p>
-            </a>
-          </li>
-        </ul>
-
       </div>
+
+      <!-- pipeline schematic -->
+      <div class="schematic" role="img" aria-label="Schematic diagram of a data pipeline flowing from Ingest through Transform and Warehouse to Serve">
+        <svg viewBox="0 0 1200 190" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#8FA9C0"></path>
+            </marker>
+          </defs>
+
+          <!-- main flow line -->
+          <line x1="40" y1="95" x2="1150" y2="95" stroke="#8FA9C0" stroke-width="1.5" marker-end="url(#arrow)"></line>
+
+          <!-- dimension ticks -->
+          <g stroke="#C3D3E1" stroke-width="1">
+            <line x1="230" y1="86" x2="230" y2="104"></line>
+            <line x1="530" y1="86" x2="530" y2="104"></line>
+            <line x1="830" y1="86" x2="830" y2="104"></line>
+          </g>
+          <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#7E93A7" text-anchor="middle">
+            <text x="230" y="128">KAFKA · ADF · API</text>
+            <text x="530" y="128">DBT · SPARK · SNOWPIPE</text>
+            <text x="830" y="128">SCD-II · TESTS · LINEAGE</text>
+          </g>
+
+          <!-- nodes -->
+          <g font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#10283F" text-anchor="middle">
+            <g>
+              <rect x="40" y="55" width="150" height="80" rx="3" fill="#FBFDFE" stroke="#10283F" stroke-width="1.5"></rect>
+              <circle cx="65" cy="70" r="3" fill="#C4501E"></circle>
+              <text x="115" y="100">INGEST</text>
+              <text x="115" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#7E93A7">raw sources</text>
+            </g>
+            <g>
+              <rect x="340" y="55" width="150" height="80" rx="3" fill="#FBFDFE" stroke="#10283F" stroke-width="1.5"></rect>
+              <circle cx="365" cy="70" r="3" fill="#C4501E"></circle>
+              <text x="415" y="100">TRANSFORM</text>
+              <text x="415" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#7E93A7">clean · model</text>
+            </g>
+            <g>
+              <rect x="640" y="55" width="150" height="80" rx="3" fill="#FBFDFE" stroke="#10283F" stroke-width="1.5"></rect>
+              <circle cx="665" cy="70" r="3" fill="#C4501E"></circle>
+              <text x="715" y="100">WAREHOUSE</text>
+              <text x="715" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#7E93A7">history · scd2</text>
+            </g>
+            <g>
+              <rect x="960" y="55" width="150" height="80" rx="3" fill="#FBFDFE" stroke="#10283F" stroke-width="1.5"></rect>
+              <circle cx="985" cy="70" r="3" fill="#1B7A6E"></circle>
+              <text x="1035" y="100">SERVE</text>
+              <text x="1035" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#7E93A7">BI · API · ML</text>
+            </g>
+          </g>
+        </svg>
+        <div class="schematic-caption">
+          <span>SCALE — NOT TO SCALE</span>
+          <span>REV C — CURRENT PLATFORM</span>
+        </div>
+      </div>
+
+      <!-- title block -->
+      <div class="title-block">
+        <div class="tb-cell">
+          <p class="tb-label">Name</p>
+          <p class="tb-value">Mukesh Seerapu</p>
+        </div>
+        <div class="tb-cell">
+          <p class="tb-label">Role</p>
+          <p class="tb-value">Senior Data Engineer</p>
+        </div>
+        <div class="tb-cell">
+          <p class="tb-label">Location</p>
+          <p class="tb-value">Dubuque, IA · Open to relocation</p>
+        </div>
+        <div class="tb-cell">
+          <p class="tb-label">Contact</p>
+          <p class="tb-value"><a href="mailto:seerapumukesh@gmail.com" class="text-link" style="color:inherit;">seerapumukesh@gmail.com</a></p>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ============ EXPERIENCE ============ -->
+  <!-- ============ EXPERIENCE — revision log ============ -->
   <section class="section" id="experience">
-    <div class="section-inner">
-      <p class="section-label"><span class="idx">01</span>experience</p>
-      <h2 class="section-title">Where the pipelines were built</h2>
+    <div class="sheet section-pad">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Revision Log</p>
+          <h2 class="section-title">Where the platform was built</h2>
+        </div>
+        <p class="section-note">Career history, read like a drawing's revision table — most recent change first.</p>
+      </div>
 
-      <div class="timeline">
+      <div class="revlog">
 
-        <article class="role">
-          <div class="role-meta">
-            <span class="role-dates">09/2024 — Present</span>
-          </div>
-          <div class="role-body">
+        <article class="rev">
+          <span class="rev-id">REV F</span>
+          <span class="rev-dates">09/2024 — Present</span>
+          <div>
             <h3 class="role-title">Data Engineer <span class="role-at">@ Dupaco Credit Union</span></h3>
             <p class="role-loc">Dubuque, IA</p>
             <ul class="role-bullets">
@@ -134,11 +165,10 @@
           </div>
         </article>
 
-        <article class="role">
-          <div class="role-meta">
-            <span class="role-dates">08/2023 — 09/2024</span>
-          </div>
-          <div class="role-body">
+        <article class="rev">
+          <span class="rev-id">REV E</span>
+          <span class="rev-dates">08/2023 — 09/2024</span>
+          <div>
             <h3 class="role-title">Data Engineer <span class="role-at">@ Global Atlantic Financial Group</span></h3>
             <p class="role-loc">New York, NY</p>
             <ul class="role-bullets">
@@ -153,11 +183,10 @@
           </div>
         </article>
 
-        <article class="role">
-          <div class="role-meta">
-            <span class="role-dates">01/2023 — 08/2023</span>
-          </div>
-          <div class="role-body">
+        <article class="rev">
+          <span class="rev-id">REV D</span>
+          <span class="rev-dates">01/2023 — 08/2023</span>
+          <div>
             <h3 class="role-title">Data Engineer <span class="role-at">@ Federal Home Loan Bank of Des Moines</span></h3>
             <p class="role-loc">Des Moines, IA</p>
             <ul class="role-bullets">
@@ -172,11 +201,10 @@
           </div>
         </article>
 
-        <article class="role">
-          <div class="role-meta">
-            <span class="role-dates">05/2018 — 11/2021</span>
-          </div>
-          <div class="role-body">
+        <article class="rev">
+          <span class="rev-id">REV C</span>
+          <span class="rev-dates">05/2018 — 11/2021</span>
+          <div>
             <h3 class="role-title">Senior Data Engineer <span class="role-at">@ OYO — Hotel Booking Platform</span></h3>
             <p class="role-loc">India</p>
             <ul class="role-bullets">
@@ -191,11 +219,10 @@
           </div>
         </article>
 
-        <article class="role">
-          <div class="role-meta">
-            <span class="role-dates">01/2016 — 05/2018</span>
-          </div>
-          <div class="role-body">
+        <article class="rev">
+          <span class="rev-id">REV B</span>
+          <span class="rev-dates">01/2016 — 05/2018</span>
+          <div>
             <h3 class="role-title">Co-Founder &amp; Engineering Lead <span class="role-at">@ Jhink Solution (Zmed — B2B Retail SaaS)</span></h3>
             <p class="role-loc">India</p>
             <ul class="role-bullets">
@@ -209,11 +236,10 @@
           </div>
         </article>
 
-        <article class="role">
-          <div class="role-meta">
-            <span class="role-dates">05/2015 — 12/2015</span>
-          </div>
-          <div class="role-body">
+        <article class="rev">
+          <span class="rev-id">REV A</span>
+          <span class="rev-dates">05/2015 — 12/2015</span>
+          <div>
             <h3 class="role-title">Database Developer <span class="role-at">@ Axis Bank</span></h3>
             <p class="role-loc">India</p>
             <ul class="role-bullets">
@@ -229,7 +255,7 @@
       </div>
 
       <div class="education">
-        <p class="section-label" style="margin-top:0;"><span class="idx">—</span>education</p>
+        <p class="section-label" style="margin-bottom:20px;">Education</p>
         <div class="edu-grid">
           <div class="edu-item">
             <p class="edu-degree">M.S. Management Information Systems</p>
@@ -249,103 +275,120 @@
     </div>
   </section>
 
-  <!-- ============ PROJECTS ============ -->
+  <!-- ============ PROJECTS — drawing sheets ============ -->
   <section class="section section--alt" id="projects">
-    <div class="section-inner">
-      <p class="section-label"><span class="idx">02</span>projects</p>
-      <div class="section-title-row">
-        <h2 class="section-title">Selected work</h2>
-        <a href="https://github.com/seerapumukesh" target="_blank" rel="noopener" class="text-link">all repositories &nbsp;&#8594;</a>
+    <div class="sheet section-pad">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Drawing Set</p>
+          <h2 class="section-title">Selected data engineering projects</h2>
+        </div>
+        <p class="section-note">Edit <code>data.js</code> to add, remove, or update these — no other file needs to change.</p>
       </div>
-      <p class="section-note">Edit <code>data.js</code> to swap these for your real repos — name, stack, and links pull straight from there.</p>
       <div class="project-grid" id="projectGrid"><!-- injected by script.js --></div>
     </div>
   </section>
 
-  <!-- ============ SKILLS ============ -->
+  <!-- ============ SKILLS — bill of materials ============ -->
   <section class="section" id="skills">
-    <div class="section-inner">
-      <p class="section-label"><span class="idx">03</span>skills</p>
-      <h2 class="section-title">Toolset</h2>
+    <div class="sheet section-pad">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Bill of Materials</p>
+          <h2 class="section-title">Toolset</h2>
+        </div>
+      </div>
 
-      <div class="skills-grid">
-        <div class="skill-col">
-          <h3 class="skill-col-title">Cloud Platforms</h3>
-          <div class="tag-row">
-            <span class="tag">AWS</span><span class="tag">S3</span><span class="tag">EC2</span><span class="tag">EMR</span><span class="tag">Redshift</span><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">Kinesis</span><span class="tag">Athena</span><span class="tag">DynamoDB</span>
-            <span class="tag">Azure Data Factory</span><span class="tag">Databricks</span><span class="tag">Synapse Analytics</span><span class="tag">ADLS</span>
-          </div>
-        </div>
-        <div class="skill-col">
-          <h3 class="skill-col-title">Distributed Processing</h3>
-          <div class="tag-row">
-            <span class="tag">PySpark</span><span class="tag">Spark SQL</span><span class="tag">Spark Streaming</span><span class="tag">Kafka</span><span class="tag">Hadoop</span><span class="tag">Hive</span>
-          </div>
-        </div>
-        <div class="skill-col">
-          <h3 class="skill-col-title">Warehousing &amp; Databases</h3>
-          <div class="tag-row">
-            <span class="tag">Snowflake</span><span class="tag">Snowpipe</span><span class="tag">Amazon Redshift</span><span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">Amazon RDS</span>
-          </div>
-        </div>
-        <div class="skill-col">
-          <h3 class="skill-col-title">ETL / ELT &amp; Orchestration</h3>
-          <div class="tag-row">
-            <span class="tag">Apache Airflow</span><span class="tag">DBT</span><span class="tag">Talend</span><span class="tag">Informatica</span><span class="tag">SSIS</span>
-          </div>
-        </div>
-        <div class="skill-col">
-          <h3 class="skill-col-title">BI &amp; Analytics</h3>
-          <div class="tag-row">
-            <span class="tag">Power BI (DAX)</span><span class="tag">Tableau</span><span class="tag">Qlik Sense</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Spark ML</span>
-          </div>
-        </div>
-        <div class="skill-col">
-          <h3 class="skill-col-title">DevOps &amp; Languages</h3>
-          <div class="tag-row">
-            <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">T-SQL</span><span class="tag">PL/SQL</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Bitbucket</span><span class="tag">Jenkins</span><span class="tag">CI/CD</span>
-          </div>
-        </div>
+      <div class="bom-wrap">
+        <table class="bom">
+          <thead>
+            <tr><th>Item</th><th>Category</th><th>Components</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="bom-idx">01</td>
+              <td class="bom-cat">Cloud Platforms</td>
+              <td><div class="tag-row"><span class="tag">AWS</span><span class="tag">S3</span><span class="tag">EC2</span><span class="tag">EMR</span><span class="tag">Redshift</span><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">Kinesis</span><span class="tag">Athena</span><span class="tag">DynamoDB</span><span class="tag">Azure Data Factory</span><span class="tag">Databricks</span><span class="tag">Synapse Analytics</span><span class="tag">ADLS</span></div></td>
+            </tr>
+            <tr>
+              <td class="bom-idx">02</td>
+              <td class="bom-cat">Distributed Processing</td>
+              <td><div class="tag-row"><span class="tag">PySpark</span><span class="tag">Spark SQL</span><span class="tag">Spark Streaming</span><span class="tag">Kafka</span><span class="tag">Hadoop</span><span class="tag">Hive</span></div></td>
+            </tr>
+            <tr>
+              <td class="bom-idx">03</td>
+              <td class="bom-cat">Warehousing &amp; Databases</td>
+              <td><div class="tag-row"><span class="tag">Snowflake</span><span class="tag">Snowpipe</span><span class="tag">Amazon Redshift</span><span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">Amazon RDS</span></div></td>
+            </tr>
+            <tr>
+              <td class="bom-idx">04</td>
+              <td class="bom-cat">ETL / ELT &amp; Orchestration</td>
+              <td><div class="tag-row"><span class="tag">Apache Airflow</span><span class="tag">DBT</span><span class="tag">Talend</span><span class="tag">Informatica</span><span class="tag">SSIS</span></div></td>
+            </tr>
+            <tr>
+              <td class="bom-idx">05</td>
+              <td class="bom-cat">BI &amp; Analytics</td>
+              <td><div class="tag-row"><span class="tag">Power BI (DAX)</span><span class="tag">Tableau</span><span class="tag">Qlik Sense</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Spark ML</span></div></td>
+            </tr>
+            <tr>
+              <td class="bom-idx">06</td>
+              <td class="bom-cat">DevOps &amp; Languages</td>
+              <td><div class="tag-row"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">T-SQL</span><span class="tag">PL/SQL</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Bitbucket</span><span class="tag">Jenkins</span><span class="tag">CI/CD</span></div></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- ============ ARTICLES ============ -->
+  <!-- ============ ARTICLES — document index ============ -->
   <section class="section section--alt" id="articles">
-    <div class="section-inner">
-      <p class="section-label"><span class="idx">04</span>articles</p>
-      <h2 class="section-title">Writing</h2>
-      <p class="section-note">Edit <code>data.js</code> to add your own posts — link each entry's <code>url</code> to the full write-up, including anything from your PhD coursework.</p>
+    <div class="sheet section-pad">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Document Index</p>
+          <h2 class="section-title">Writing</h2>
+        </div>
+        <p class="section-note">Each entry opens its own page. Add new ones by duplicating <code>articles/_template.html</code>.</p>
+      </div>
       <div class="article-list" id="articleList"><!-- injected by script.js --></div>
     </div>
   </section>
 
-  <!-- ============ CONTACT ============ -->
+  <!-- ============ CONTACT — sign-off ============ -->
   <section class="section" id="contact">
-    <div class="section-inner">
-      <p class="section-label"><span class="idx">05</span>contact</p>
-      <h2 class="section-title">Let's talk data</h2>
-      <p class="hero-sub" style="max-width:640px;">
-        Open to relocation. Reach out about roles, collaborations, or anything pipeline-shaped.
-      </p>
+    <div class="sheet section-pad">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Sign-off</p>
+          <h2 class="section-title">Let's talk data</h2>
+        </div>
+      </div>
+      <p class="hero-sub" style="margin-top:-24px;">Open to relocation. Reach out about roles, collaborations, or anything pipeline-shaped.</p>
 
       <div class="contact-grid">
         <a class="contact-card" href="mailto:seerapumukesh@gmail.com">
-          <span class="contact-label">email</span>
+          <span class="contact-label">Email</span>
           <span class="contact-value">seerapumukesh@gmail.com</span>
         </a>
         <a class="contact-card" href="tel:+15158174260">
-          <span class="contact-label">phone</span>
+          <span class="contact-label">Phone</span>
           <span class="contact-value">515&#8209;817&#8209;4260</span>
         </a>
         <a class="contact-card" href="https://www.linkedin.com/in/mukesh-msis-mba/" target="_blank" rel="noopener">
-          <span class="contact-label">linkedin</span>
+          <span class="contact-label">LinkedIn</span>
           <span class="contact-value">/in/mukesh&#8209;msis&#8209;mba</span>
         </a>
         <a class="contact-card" href="https://github.com/seerapumukesh" target="_blank" rel="noopener">
-          <span class="contact-label">github</span>
+          <span class="contact-label">GitHub</span>
           <span class="contact-value">/seerapumukesh</span>
         </a>
+      </div>
+
+      <div class="signoff">
+        <div class="tb-cell"><p class="tb-label">Status</p><p class="tb-value">Open to relocation</p></div>
+        <div class="tb-cell"><p class="tb-label">Approved for</p><p class="tb-value">Data Engineering roles</p></div>
+        <div class="tb-cell"><p class="tb-label">Last updated</p><p class="tb-value" id="lastUpdated"></p></div>
       </div>
     </div>
   </section>
@@ -353,9 +396,9 @@
 </main>
 
 <footer class="footer">
-  <div class="footer-inner">
+  <div class="sheet footer-inner">
     <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
-    <a href="#top" class="footer-top">back to top &#8593;</a>
+    <a href="#top" class="footer-top">Back to top ↑</a>
   </div>
 </footer>
 

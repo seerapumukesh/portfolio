@@ -2,18 +2,21 @@
 const projectGrid = document.getElementById('projectGrid');
 if (projectGrid && typeof PROJECTS !== 'undefined') {
   projectGrid.innerHTML = PROJECTS.map(p => `
-    <a class="project-card" href="${p.url}" target="_blank" rel="noopener">
-      <div class="project-card-top">
-        <span class="project-name">${escapeHtml(p.name)}</span>
-        <span class="project-status ${p.status === 'archived' ? 'project-status--archived' : ''}">${escapeHtml(p.status)}</span>
+    <div class="project-card">
+      <div class="project-head">
+        <span>${escapeHtml(p.sheet)}</span>
+        <span>${escapeHtml(p.status)} · ${escapeHtml(p.year)}</span>
       </div>
-      <p class="project-tagline">${escapeHtml(p.tagline)}</p>
-      <p class="project-desc">${escapeHtml(p.description)}</p>
-      <div class="tag-row">
-        ${p.stack.map(s => `<span class="tag">${escapeHtml(s)}</span>`).join('')}
+      <div class="project-body">
+        <h3 class="project-name">${escapeHtml(p.name)}</h3>
+        <ul class="project-highlights">
+          ${p.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
+        </ul>
+        <div class="tag-row">
+          ${p.stack.map(s => `<span class="tag">${escapeHtml(s)}</span>`).join('')}
+        </div>
       </div>
-      <span class="project-year">${escapeHtml(p.year)}</span>
-    </a>
+    </div>
   `).join('');
 }
 
@@ -24,15 +27,14 @@ if (articleList && typeof ARTICLES !== 'undefined') {
     .slice()
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map(a => `
-      <a class="article-item" href="${a.url}" target="_blank" rel="noopener">
+      <a class="article-item" href="${a.url}">
+        <span class="article-date">${formatDate(a.date)}</span>
         <div>
-          <span class="article-date">${formatDate(a.date)}</span>
           <span class="article-tag">${escapeHtml(a.tag)}</span>
-        </div>
-        <div>
           <h3 class="article-title">${escapeHtml(a.title)}</h3>
           <p class="article-excerpt">${escapeHtml(a.excerpt)}</p>
         </div>
+        <span class="article-go">Read &#8594;</span>
       </a>
     `).join('');
 }
@@ -49,12 +51,16 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-// Footer year
+// Footer year + last-updated stamp
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Mobile nav toggle (progressive enhancement — nav links are hidden below 860px;
-// this reveals them as a simple dropdown)
+const lastUpdatedEl = document.getElementById('lastUpdated');
+if (lastUpdatedEl) {
+  lastUpdatedEl.textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+// Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
 if (navToggle && navLinks) {
