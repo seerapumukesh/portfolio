@@ -1,17 +1,12 @@
 /* ============================================================
-   EDIT ME — this file drives the PROJECTS and ARTICLES sections.
-   Add, remove, or edit entries below. No other files need to change.
-
-   For ARTICLES: each entry's "url" must point to a real page (not "#").
-   Duplicate articles/_template.html to add a new one, then link it here.
+   EDIT ME — drives Projects, Blog, and the Skills filter.
    ============================================================ */
 
 const PROJECTS = [
   {
     name: "Enterprise Snowflake Migration",
-    sheet: "SHEET 01",
     year: "2023",
-    status: "production",
+    status: "Production",
     highlights: [
       "Migrated SQL Server warehouse to Snowflake",
       "Built dbt transformation layer",
@@ -23,9 +18,8 @@ const PROJECTS = [
   },
   {
     name: "Real-time Financial Data Platform",
-    sheet: "SHEET 02",
     year: "2023 — 2024",
-    status: "production",
+    status: "Production",
     highlights: [
       "Built event-driven ingestion using REST APIs",
       "Automated Azure Data Factory pipelines",
@@ -35,9 +29,8 @@ const PROJECTS = [
   },
   {
     name: "Analytics Data Platform",
-    sheet: "SHEET 03",
     year: "2024 — Present",
-    status: "production",
+    status: "Production",
     highlights: [
       "Designed reusable semantic datasets",
       "Built Power BI reporting layer",
@@ -72,4 +65,31 @@ const ARTICLES = [
     tag: "Performance",
     url: "articles/snowflake-performance.html"
   }
+];
+
+const SKILLS = [
+  { name: "AWS", cat: "Cloud" }, { name: "S3", cat: "Cloud" }, { name: "EC2", cat: "Cloud" },
+  { name: "EMR", cat: "Cloud" }, { name: "Redshift", cat: "Cloud" }, { name: "Lambda", cat: "Cloud" },
+  { name: "Glue", cat: "Cloud" }, { name: "Kinesis", cat: "Cloud" }, { name: "Athena", cat: "Cloud" },
+  { name: "DynamoDB", cat: "Cloud" }, { name: "Azure Data Factory", cat: "Cloud" }, { name: "Databricks", cat: "Cloud" },
+  { name: "Synapse Analytics", cat: "Cloud" }, { name: "ADLS", cat: "Cloud" },
+
+  { name: "PySpark", cat: "Processing" }, { name: "Spark SQL", cat: "Processing" },
+  { name: "Spark Streaming", cat: "Processing" }, { name: "Kafka", cat: "Processing" },
+  { name: "Hadoop", cat: "Processing" }, { name: "Hive", cat: "Processing" },
+
+  { name: "Snowflake", cat: "Warehousing" }, { name: "Snowpipe", cat: "Warehousing" },
+  { name: "Amazon Redshift", cat: "Warehousing" }, { name: "PostgreSQL", cat: "Warehousing" },
+  { name: "SQL Server", cat: "Warehousing" }, { name: "Amazon RDS", cat: "Warehousing" },
+
+  { name: "Apache Airflow", cat: "Orchestration" }, { name: "DBT", cat: "Orchestration" },
+  { name: "Talend", cat: "Orchestration" }, { name: "Informatica", cat: "Orchestration" },
+  { name: "SSIS", cat: "Orchestration" },
+
+  { name: "Power BI (DAX)", cat: "BI" }, { name: "Tableau", cat: "BI" }, { name: "Qlik Sense", cat: "BI" },
+  { name: "Pandas", cat: "BI" }, { name: "NumPy", cat: "BI" }, { name: "Spark ML", cat: "BI" },
+
+  { name: "Python", cat: "DevOps" }, { name: "SQL", cat: "DevOps" }, { name: "T-SQL", cat: "DevOps" },
+  { name: "PL/SQL", cat: "DevOps" }, { name: "Git", cat: "DevOps" }, { name: "GitHub", cat: "DevOps" },
+  { name: "Bitbucket", cat: "DevOps" }, { name: "Jenkins", cat: "DevOps" }, { name: "CI/CD", cat: "DevOps" }
 ];

@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Airflow DAGs vs. cron: what actually changes at scale — Mukesh Seerapu</title>
-<meta name="description" content="A field comparison from replacing cron-based scheduling with dependency-aware Airflow orchestration.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -16,19 +15,20 @@
   <div class="nav-inner">
     <a href="../index.html" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#about">About</a>
       <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
       <a href="../index.html#skills">Skills</a>
-      <a href="../index.html#articles">Blog</a>
+      <a href="../index.html#blog">Blog</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
-    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume</a>
   </div>
 </header>
 
 <main class="article-detail">
-  <a href="../index.html#articles" class="back-link">&#8592; Back to blog</a>
-  <span class="article-tag">Orchestration</span>
+  <a href="../index.html#blog" class="back-link">&#8592; Back to blog</a>
+  <span class="blog-tag">Orchestration</span>
   <h1>Airflow DAGs vs. cron: what actually changes at scale</h1>
   <p class="article-meta">January 2026 · Mukesh Seerapu</p>
 
@@ -61,17 +61,16 @@
     <h2>What it costs you</h2>
     <p>
       Orchestration infrastructure is now a system you have to run and monitor
-      in its own right — a scheduler, a metadata database, worker capacity.
-      For a handful of independent jobs with no real dependencies, cron is
-      still the right, boring answer. The switch pays off specifically when
-      job count and inter-dependency both grow past what one person can hold
-      in their head.
+      in its own right. For a handful of independent jobs with no real
+      dependencies, cron is still the right, boring answer. The switch pays
+      off specifically when job count and inter-dependency both grow past
+      what one person can hold in their head.
     </p>
   </div>
 </main>
 
 <footer class="footer">
-  <div class="sheet footer-inner">
+  <div class="wrap footer-inner">
     <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
     <a href="../index.html" class="footer-top">&#8592; All posts</a>
   </div>

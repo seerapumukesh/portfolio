@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designing Slowly Changing Dimensions that survive audits — Mukesh Seerapu</title>
-<meta name="description" content="Notes on SCD Type 2 modeling patterns for regulated financial data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -16,19 +15,20 @@
   <div class="nav-inner">
     <a href="../index.html" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#about">About</a>
       <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
       <a href="../index.html#skills">Skills</a>
-      <a href="../index.html#articles">Blog</a>
+      <a href="../index.html#blog">Blog</a>
       <a href="../index.html#contact">Contact</a>
     </nav>
-    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume</a>
   </div>
 </header>
 
 <main class="article-detail">
-  <a href="../index.html#articles" class="back-link">&#8592; Back to blog</a>
-  <span class="article-tag">Data Modeling</span>
+  <a href="../index.html#blog" class="back-link">&#8592; Back to blog</a>
+  <span class="blog-tag">Data Modeling</span>
   <h1>Designing Slowly Changing Dimensions that survive audits</h1>
   <p class="article-meta">March 2026 · Mukesh Seerapu</p>
 
@@ -64,15 +64,13 @@
       snapshots for the mechanical Type 2 tracking with explicit tests asserting
       no overlapping date ranges per natural key, plus a small reconciliation
       job that flagged any record where the source system's own "last modified"
-      timestamp didn't line up with when we recorded the change. That gap
-      between "when it changed" and "when we saw it change" is usually where
-      audit questions land.
+      timestamp didn't line up with when we recorded the change.
     </p>
   </div>
 </main>
 
 <footer class="footer">
-  <div class="sheet footer-inner">
+  <div class="wrap footer-inner">
     <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
     <a href="../index.html" class="footer-top">&#8592; All posts</a>
   </div>

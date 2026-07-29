@@ -7,255 +7,239 @@
 <meta name="description" content="Mukesh Seerapu — Senior Data Engineer. Cloud data platforms, ETL/ELT pipelines, and lakehouse architecture across financial services and e-commerce.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#top" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
+    <a href="#home" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
-      <a href="#articles">Blog</a>
+      <a href="#blog">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-resume" href="Mukesh_Seerapu_Data_Engineer.pdf" download>Resume ↓</a>
+    <a class="nav-resume" href="Mukesh_Seerapu_Data_Engineer.pdf" download>Resume</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <main>
 
-  <!-- ============ HERO — blueprint sheet ============ -->
-  <section class="hero" id="top">
-    <div class="sheet hero-sheet">
+  <!-- ============ HOME / HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-blob hero-blob--1"></div>
+    <div class="hero-blob hero-blob--2"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Building reliable data platforms</p>
+          <p class="hero-hi">Hi, I'm</p>
+          <h1 class="hero-title">Mukesh Seerapu</h1>
+          <p class="hero-role">Senior Data Engineer</p>
+          <p class="hero-sub">
+            10+ years designing cloud data platforms, ETL/ELT pipelines, and lakehouse
+            architecture across financial services, banking, and e-commerce. Currently
+            building the data platform at Dupaco Credit Union.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="Mukesh_Seerapu_Data_Engineer.pdf" download class="btn btn-ghost">Resume</a>
+            <a href="#contact" class="btn btn-ghost">Contact</a>
+          </div>
+          <p class="hero-stack-label">Technologies I work with</p>
+          <div class="tag-row">
+            <span class="tag">Snowflake</span><span class="tag">AWS</span><span class="tag">Azure</span>
+            <span class="tag">Airflow</span><span class="tag">DBT</span><span class="tag">PySpark</span>
+            <span class="tag">Kafka</span><span class="tag">Power BI</span>
+          </div>
+        </div>
 
-      <div class="hero-topline">
-        <span>DWG NO. DE&#8209;2026&#8209;01</span>
-        <span>DATA PLATFORM ARCHITECTURE — GENERAL ARRANGEMENT</span>
-        <span>SHEET 1 OF 1</span>
-      </div>
+        <div class="hero-graphic">
+          <div class="float-badge float-badge--1"><span class="dot"></span>Snowflake</div>
+          <div class="float-badge float-badge--2"><span class="dot"></span>Airflow</div>
+          <div class="float-badge float-badge--3"><span class="dot"></span>AWS</div>
 
-      <div class="hero-copy">
-        <p class="eyebrow">// senior_data_engineer</p>
-        <h1 class="hero-title">I design the systems<br><span class="hero-title-accent">that move your data.</span></h1>
-        <p class="hero-sub">
-          10+ years building cloud data platforms, ETL/ELT pipelines, and lakehouse
-          architecture across financial services, banking, and e-commerce. Currently
-          at Dupaco Credit Union, Dubuque, IA.
-        </p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">View projects</a>
-          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+          <div class="pipeline-card">
+            <div class="pipeline-card-top">
+              <div class="pipeline-dots"><span></span><span></span><span></span></div>
+              <span class="pipeline-label">data_pipeline.live</span>
+            </div>
+            <svg class="pipeline-svg" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated diagram of data flowing from Ingest through Transform and Warehouse to Serve">
+              <g stroke="#E8DFC8" stroke-width="2" fill="none">
+                <path d="M60,50 L60,210" />
+                <path d="M60,50 C60,20 90,20 120,20 L340,20" />
+              </g>
+              <path class="pflow" d="M60,50 L60,210 M60,210 L360,210" stroke="#43AEEB" stroke-width="3" fill="none" stroke-linecap="round" />
+              <path class="pflow" d="M60,50 C60,20 90,20 120,20 L360,20" stroke="#FFC94A" stroke-width="3" fill="none" stroke-linecap="round" style="animation-delay:.4s" />
+
+              <circle class="pnode-pulse d1" cx="60" cy="50" r="9" fill="#43AEEB"/>
+              <text x="80" y="55" font-family="IBM Plex Mono, monospace" font-size="12" fill="#1D1B31" font-weight="600">Ingest</text>
+
+              <circle class="pnode-pulse d2" cx="360" cy="20" r="9" fill="#FFC94A"/>
+              <text x="290" y="14" font-family="IBM Plex Mono, monospace" font-size="12" fill="#1D1B31" font-weight="600">Transform</text>
+
+              <circle class="pnode-pulse d3" cx="360" cy="210" r="9" fill="#43AEEB"/>
+              <text x="270" y="235" font-family="IBM Plex Mono, monospace" font-size="12" fill="#1D1B31" font-weight="600">Warehouse</text>
+
+              <rect x="150" y="95" width="120" height="70" rx="14" fill="#F3EBD9" />
+              <text x="210" y="126" text-anchor="middle" font-family="Sora, sans-serif" font-size="13" font-weight="700" fill="#1D1B31">SERVE</text>
+              <text x="210" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4A4766">BI · API · ML</text>
+              <circle class="pnode-pulse d4" cx="165" cy="103" r="5" fill="#6DD4A0"/>
+            </svg>
+          </div>
         </div>
       </div>
 
-      <!-- pipeline schematic -->
-      <div class="schematic" role="img" aria-label="Schematic diagram of a data pipeline flowing from Ingest through Transform and Warehouse to Serve">
-        <svg viewBox="0 0 1200 190" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0,0 L10,5 L0,10 z" fill="#C1C7D0"></path>
-            </marker>
-          </defs>
-
-          <!-- main flow line -->
-          <line x1="40" y1="95" x2="1150" y2="95" stroke="#C1C7D0" stroke-width="1.5" marker-end="url(#arrow)"></line>
-
-          <!-- dimension ticks -->
-          <g stroke="#DFE1E6" stroke-width="1">
-            <line x1="230" y1="86" x2="230" y2="104"></line>
-            <line x1="530" y1="86" x2="530" y2="104"></line>
-            <line x1="830" y1="86" x2="830" y2="104"></line>
-          </g>
-          <g font-family="'IBM Plex Mono', monospace" font-size="10" fill="#6B778C" text-anchor="middle">
-            <text x="230" y="128">KAFKA · ADF · API</text>
-            <text x="530" y="128">DBT · SPARK · SNOWPIPE</text>
-            <text x="830" y="128">SCD-II · TESTS · LINEAGE</text>
-          </g>
-
-          <!-- nodes -->
-          <g font-family="'Space Grotesk', sans-serif" font-size="15" font-weight="600" fill="#172B4D" text-anchor="middle">
-            <g>
-              <rect x="40" y="55" width="150" height="80" rx="6" fill="#FFFFFF" stroke="#172B4D" stroke-width="1.5"></rect>
-              <circle cx="65" cy="70" r="3" fill="#0052CC"></circle>
-              <text x="115" y="100">INGEST</text>
-              <text x="115" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#6B778C">raw sources</text>
-            </g>
-            <g>
-              <rect x="340" y="55" width="150" height="80" rx="6" fill="#FFFFFF" stroke="#172B4D" stroke-width="1.5"></rect>
-              <circle cx="365" cy="70" r="3" fill="#0052CC"></circle>
-              <text x="415" y="100">TRANSFORM</text>
-              <text x="415" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#6B778C">clean · model</text>
-            </g>
-            <g>
-              <rect x="640" y="55" width="150" height="80" rx="6" fill="#FFFFFF" stroke="#172B4D" stroke-width="1.5"></rect>
-              <circle cx="665" cy="70" r="3" fill="#0052CC"></circle>
-              <text x="715" y="100">WAREHOUSE</text>
-              <text x="715" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#6B778C">history · scd2</text>
-            </g>
-            <g>
-              <rect x="960" y="55" width="150" height="80" rx="6" fill="#FFFFFF" stroke="#172B4D" stroke-width="1.5"></rect>
-              <circle cx="985" cy="70" r="3" fill="#216E4E"></circle>
-              <text x="1035" y="100">SERVE</text>
-              <text x="1035" y="118" font-family="'IBM Plex Mono', monospace" font-size="9.5" font-weight="400" fill="#6B778C">BI · API · ML</text>
-            </g>
-          </g>
-        </svg>
-        <div class="schematic-caption">
-          <span>SCALE — NOT TO SCALE</span>
-          <span>REV C — CURRENT PLATFORM</span>
-        </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="stat-num" data-count="10" data-suffix="+">0</div><div class="stat-label">Years Experience</div></div>
+        <div class="stat"><div class="stat-num" data-count="6" data-suffix="+">0</div><div class="stat-label">Data Platforms Delivered</div></div>
+        <div class="stat"><div class="stat-num" data-count="30" data-suffix="+">0</div><div class="stat-label">Tools &amp; Technologies</div></div>
+        <div class="stat"><div class="stat-num" data-count="45" data-suffix="%">0</div><div class="stat-label">Query Performance Gain</div></div>
       </div>
-
-      <!-- title block -->
-      <div class="title-block">
-        <div class="tb-cell">
-          <p class="tb-label">Name</p>
-          <p class="tb-value">Mukesh Seerapu</p>
-        </div>
-        <div class="tb-cell">
-          <p class="tb-label">Role</p>
-          <p class="tb-value">Senior Data Engineer</p>
-        </div>
-        <div class="tb-cell">
-          <p class="tb-label">Location</p>
-          <p class="tb-value">Dubuque, IA · Open to relocation</p>
-        </div>
-        <div class="tb-cell">
-          <p class="tb-label">Contact</p>
-          <p class="tb-value"><a href="mailto:seerapumukesh@gmail.com" class="text-link" style="color:inherit;">seerapumukesh@gmail.com</a></p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- ============ EXPERIENCE — revision log ============ -->
-  <section class="section" id="experience">
-    <div class="sheet section-pad">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Revision Log</p>
-          <h2 class="section-title">Where the platform was built</h2>
+  <!-- ============ ABOUT / WHAT I DO ============ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">About</p>
+        <h2 class="section-title">What I do</h2>
+        <p class="section-sub">End-to-end ownership of the data platform — from raw ingestion to the dashboard someone actually trusts.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="about-icon about-icon--sky">🏗️</div>
+          <h3>Data Platform Architecture</h3>
+          <p>Designing cloud warehouses and lakehouses that consolidate messy, multi-source data into one trusted layer.</p>
         </div>
-        <p class="section-note">Career history, read like a drawing's revision table — most recent change first.</p>
+        <div class="about-card reveal">
+          <div class="about-icon about-icon--sun">🔄</div>
+          <h3>Pipeline Engineering</h3>
+          <p>Building ETL/ELT pipelines with Airflow, DBT, and Spark that are tested, monitored, and safe to change.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon about-icon--sky">☁️</div>
+          <h3>Cloud Data Infrastructure</h3>
+          <p>AWS and Azure-native data infrastructure — S3/Redshift/EMR, ADF/Databricks/Synapse — built to scale.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon about-icon--sun">📊</div>
+          <h3>Analytics Enablement</h3>
+          <p>Semantic models and BI layers in Power BI and Qlik that cut analysts' SQL dependency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section section--tint" id="projects">
+    <div class="wrap">
+      <div class="section-head section-head--row reveal">
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2 class="section-title">Selected data engineering projects</h2>
+        </div>
+        <a href="https://github.com/seerapumukesh" target="_blank" rel="noopener" class="text-link">All repositories →</a>
+      </div>
+      <div class="project-grid" id="projectGrid"><!-- injected by script.js --></div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Experience</p>
+        <h2 class="section-title">Career timeline</h2>
+        <p class="section-sub">10+ years across financial services, banking, and e-commerce data platforms.</p>
       </div>
 
-      <div class="revlog">
+      <div class="timeline">
 
-        <article class="rev">
-          <span class="rev-id">REV F</span>
-          <span class="rev-dates">09/2024 — Present</span>
-          <div>
-            <h3 class="role-title">Data Engineer <span class="role-at">@ Dupaco Credit Union</span></h3>
-            <p class="role-loc">Dubuque, IA</p>
-            <ul class="role-bullets">
-              <li>Owned end-to-end architecture of the enterprise data platform, consolidating 8+ source systems into a unified warehouse across SQL Server, Snowflake, Talend, and Azure Synapse.</li>
-              <li>Introduced DBT for transformation, automated testing, and schema validation — cutting ad-hoc data investigation requests roughly in half.</li>
-              <li>Built CI/CD pipelines with Git for data project deployments, standardizing review across a team of 6 engineers.</li>
-              <li>Delivered Power BI and Qlik Sense dashboards for 40+ business users, cutting report generation time by 60%.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Snowflake</span><span class="tag">Talend</span><span class="tag">DBT</span><span class="tag">Azure Synapse</span><span class="tag">Power BI</span><span class="tag">Qlik Sense</span>
-            </div>
-          </div>
+        <article class="tl-item is-current reveal">
+          <span class="tl-dates">Sep 2024 — Present</span>
+          <h3 class="tl-title">Data Engineer <span class="tl-at">@ Dupaco Credit Union</span></h3>
+          <p class="tl-loc">Dubuque, IA</p>
+          <ul class="tl-bullets">
+            <li>Owned end-to-end architecture of the enterprise data platform, consolidating 8+ source systems into a unified warehouse across SQL Server, Snowflake, Talend, and Azure Synapse.</li>
+            <li>Introduced DBT for transformation, automated testing, and schema validation — cutting ad-hoc data investigation requests roughly in half.</li>
+            <li>Built CI/CD pipelines with Git for data project deployments, standardizing review across a team of 6 engineers.</li>
+            <li>Delivered Power BI and Qlik Sense dashboards for 40+ business users, cutting report generation time by 60%.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Snowflake</span><span class="tag">Talend</span><span class="tag">DBT</span><span class="tag">Azure Synapse</span><span class="tag">Power BI</span></div>
         </article>
 
-        <article class="rev">
-          <span class="rev-id">REV E</span>
-          <span class="rev-dates">08/2023 — 09/2024</span>
-          <div>
-            <h3 class="role-title">Data Engineer <span class="role-at">@ Global Atlantic Financial Group</span></h3>
-            <p class="role-loc">New York, NY</p>
-            <ul class="role-bullets">
-              <li>Owned end-to-end migration of on-prem annuities data infrastructure to AWS — S3 as the data lake, Redshift as the warehouse, Lambda for serverless transformation.</li>
-              <li>Re-platformed streaming ingestion from Kafka to AWS Kinesis to improve throughput for a team without Kafka expertise.</li>
-              <li>Built Airflow DAGs orchestrating 30+ daily batch jobs across Redshift, DynamoDB, and S3, replacing fragile cron scheduling.</li>
-              <li>Ran distributed Spark workloads on AWS EMR with CloudWatch-based observability for pipeline failures.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">AWS</span><span class="tag">Redshift</span><span class="tag">Kinesis</span><span class="tag">Airflow</span><span class="tag">EMR</span><span class="tag">PostgreSQL</span>
-            </div>
-          </div>
+        <article class="tl-item reveal">
+          <span class="tl-dates">Aug 2023 — Sep 2024</span>
+          <h3 class="tl-title">Data Engineer <span class="tl-at">@ Global Atlantic Financial Group</span></h3>
+          <p class="tl-loc">New York, NY</p>
+          <ul class="tl-bullets">
+            <li>Owned end-to-end migration of on-prem annuities data infrastructure to AWS — S3 as the data lake, Redshift as the warehouse, Lambda for serverless transformation.</li>
+            <li>Re-platformed streaming ingestion from Kafka to AWS Kinesis to improve throughput for a team without Kafka expertise.</li>
+            <li>Built Airflow DAGs orchestrating 30+ daily batch jobs across Redshift, DynamoDB, and S3, replacing fragile cron scheduling.</li>
+            <li>Ran distributed Spark workloads on AWS EMR with CloudWatch-based observability for pipeline failures.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">AWS</span><span class="tag">Redshift</span><span class="tag">Kinesis</span><span class="tag">Airflow</span><span class="tag">EMR</span></div>
         </article>
 
-        <article class="rev">
-          <span class="rev-id">REV D</span>
-          <span class="rev-dates">01/2023 — 08/2023</span>
-          <div>
-            <h3 class="role-title">Data Engineer <span class="role-at">@ Federal Home Loan Bank of Des Moines</span></h3>
-            <p class="role-loc">Des Moines, IA</p>
-            <ul class="role-bullets">
-              <li>Designed ADF pipelines ingesting 15+ data sources from Azure SQL, Blob Storage, and Synapse into Azure Databricks.</li>
-              <li>Led migration of on-prem SQL Server datasets to Snowflake, implementing SCD Type 2 logic to preserve historical accuracy.</li>
-              <li>Implemented Apache Airflow for orchestration, replacing brittle time-based scheduling with dependency tracking.</li>
-              <li>Used PySpark in Databricks to standardize large-scale regulatory datasets with automated data quality checks.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Azure Data Factory</span><span class="tag">Databricks</span><span class="tag">Snowflake</span><span class="tag">Snowpipe</span><span class="tag">Power BI</span>
-            </div>
-          </div>
+        <article class="tl-item reveal">
+          <span class="tl-dates">Jan 2023 — Aug 2023</span>
+          <h3 class="tl-title">Data Engineer <span class="tl-at">@ Federal Home Loan Bank of Des Moines</span></h3>
+          <p class="tl-loc">Des Moines, IA</p>
+          <ul class="tl-bullets">
+            <li>Designed ADF pipelines ingesting 15+ data sources from Azure SQL, Blob Storage, and Synapse into Azure Databricks.</li>
+            <li>Led migration of on-prem SQL Server datasets to Snowflake, implementing SCD Type 2 logic to preserve historical accuracy.</li>
+            <li>Implemented Apache Airflow for orchestration, replacing brittle time-based scheduling with dependency tracking.</li>
+            <li>Used PySpark in Databricks to standardize large-scale regulatory datasets with automated data quality checks.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Azure Data Factory</span><span class="tag">Databricks</span><span class="tag">Snowflake</span><span class="tag">Snowpipe</span></div>
         </article>
 
-        <article class="rev">
-          <span class="rev-id">REV C</span>
-          <span class="rev-dates">05/2018 — 11/2021</span>
-          <div>
-            <h3 class="role-title">Senior Data Engineer <span class="role-at">@ OYO — Hotel Booking Platform</span></h3>
-            <p class="role-loc">India</p>
-            <ul class="role-bullets">
-              <li>Designed and owned the data platform migration from on-prem Hadoop to Azure, supporting 5x growth in booking volume over 3 years.</li>
-              <li>Architected real-time streaming pipelines with Spark Streaming, Kafka, and Scala, storing output in Cassandra for low-latency access.</li>
-              <li>Built reusable ingestion and transformation frameworks with standardized data quality and lineage practices across 10+ teams.</li>
-              <li>Collaborated with data science on predictive pricing via AWS SageMaker batch inference.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Azure</span><span class="tag">Hadoop</span><span class="tag">Kafka</span><span class="tag">Cassandra</span><span class="tag">Scala</span><span class="tag">SageMaker</span>
-            </div>
-          </div>
+        <article class="tl-item reveal">
+          <span class="tl-dates">May 2018 — Nov 2021</span>
+          <h3 class="tl-title">Senior Data Engineer <span class="tl-at">@ OYO — Hotel Booking Platform</span></h3>
+          <p class="tl-loc">India</p>
+          <ul class="tl-bullets">
+            <li>Designed and owned the data platform migration from on-prem Hadoop to Azure, supporting 5x growth in booking volume over 3 years.</li>
+            <li>Architected real-time streaming pipelines with Spark Streaming, Kafka, and Scala, storing output in Cassandra for low-latency access.</li>
+            <li>Built reusable ingestion and transformation frameworks with standardized data quality and lineage practices across 10+ teams.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Azure</span><span class="tag">Hadoop</span><span class="tag">Kafka</span><span class="tag">Cassandra</span><span class="tag">Scala</span></div>
         </article>
 
-        <article class="rev">
-          <span class="rev-id">REV B</span>
-          <span class="rev-dates">01/2016 — 05/2018</span>
-          <div>
-            <h3 class="role-title">Co-Founder &amp; Engineering Lead <span class="role-at">@ Jhink Solution (Zmed — B2B Retail SaaS)</span></h3>
-            <p class="role-loc">India</p>
-            <ul class="role-bullets">
-              <li>Founded and led engineering for a B2B retail inventory platform, scaling to 200+ retail clients across 3 cities.</li>
-              <li>Designed the data architecture from scratch: MySQL operational store, Informatica ETL, Python automation.</li>
-              <li>Led a team of 12 engineers across backend, frontend, and QA through full SDLC.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Python</span><span class="tag">Django</span><span class="tag">MySQL</span><span class="tag">Informatica</span>
-            </div>
-          </div>
+        <article class="tl-item reveal">
+          <span class="tl-dates">Jan 2016 — May 2018</span>
+          <h3 class="tl-title">Co-Founder &amp; Engineering Lead <span class="tl-at">@ Jhink Solution (Zmed)</span></h3>
+          <p class="tl-loc">India</p>
+          <ul class="tl-bullets">
+            <li>Founded and led engineering for a B2B retail inventory platform, scaling to 200+ retail clients across 3 cities.</li>
+            <li>Designed the data architecture from scratch: MySQL operational store, Informatica ETL, Python automation.</li>
+            <li>Led a team of 12 engineers across backend, frontend, and QA through full SDLC.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Django</span><span class="tag">MySQL</span><span class="tag">Informatica</span></div>
         </article>
 
-        <article class="rev">
-          <span class="rev-id">REV A</span>
-          <span class="rev-dates">05/2015 — 12/2015</span>
-          <div>
-            <h3 class="role-title">Database Developer <span class="role-at">@ Axis Bank</span></h3>
-            <p class="role-loc">India</p>
-            <ul class="role-bullets">
-              <li>Developed and optimized PL/SQL stored procedures, functions, and triggers for core banking transaction processing.</li>
-              <li>Partnered with ETL/SSIS developers to validate integration outputs across source banking systems.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">PL/SQL</span><span class="tag">SQL Server</span><span class="tag">SSIS</span>
-            </div>
-          </div>
+        <article class="tl-item reveal">
+          <span class="tl-dates">May 2015 — Dec 2015</span>
+          <h3 class="tl-title">Database Developer <span class="tl-at">@ Axis Bank</span></h3>
+          <p class="tl-loc">India</p>
+          <ul class="tl-bullets">
+            <li>Developed and optimized PL/SQL stored procedures, functions, and triggers for core banking transaction processing.</li>
+            <li>Partnered with ETL/SSIS developers to validate integration outputs across source banking systems.</li>
+          </ul>
+          <div class="tag-row"><span class="tag">PL/SQL</span><span class="tag">SQL Server</span><span class="tag">SSIS</span></div>
         </article>
 
       </div>
 
-      <div class="education">
-        <p class="section-label" style="margin-bottom:20px;">Education</p>
+      <div class="education reveal">
+        <p class="eyebrow">Education</p>
         <div class="edu-grid">
           <div class="edu-item">
             <p class="edu-degree">M.S. Management Information Systems</p>
@@ -275,120 +259,56 @@
     </div>
   </section>
 
-  <!-- ============ PROJECTS — drawing sheets ============ -->
-  <section class="section section--alt" id="projects">
-    <div class="sheet section-pad">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Drawing Set</p>
-          <h2 class="section-title">Selected data engineering projects</h2>
-        </div>
-        <p class="section-note">Edit <code>data.js</code> to add, remove, or update these — no other file needs to change.</p>
+  <!-- ============ SKILLS ============ -->
+  <section class="section section--tint" id="skills">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Skills &amp; Profile</p>
+        <h2 class="section-title">Professional expertise</h2>
+        <p class="section-sub">Filter by category, or browse everything.</p>
       </div>
-      <div class="project-grid" id="projectGrid"><!-- injected by script.js --></div>
+      <div class="skill-filters" id="skillFilters"><!-- injected by script.js --></div>
+      <div class="skill-cloud" id="skillCloud"><!-- injected by script.js --></div>
     </div>
   </section>
 
-  <!-- ============ SKILLS — bill of materials ============ -->
-  <section class="section" id="skills">
-    <div class="sheet section-pad">
-      <div class="section-head">
+  <!-- ============ BLOG ============ -->
+  <section class="section" id="blog">
+    <div class="wrap">
+      <div class="section-head section-head--row reveal">
         <div>
-          <p class="section-label">Bill of Materials</p>
-          <h2 class="section-title">Toolset</h2>
-        </div>
-      </div>
-
-      <div class="bom-wrap">
-        <table class="bom">
-          <thead>
-            <tr><th>Item</th><th>Category</th><th>Components</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="bom-idx">01</td>
-              <td class="bom-cat">Cloud Platforms</td>
-              <td><div class="tag-row"><span class="tag">AWS</span><span class="tag">S3</span><span class="tag">EC2</span><span class="tag">EMR</span><span class="tag">Redshift</span><span class="tag">Lambda</span><span class="tag">Glue</span><span class="tag">Kinesis</span><span class="tag">Athena</span><span class="tag">DynamoDB</span><span class="tag">Azure Data Factory</span><span class="tag">Databricks</span><span class="tag">Synapse Analytics</span><span class="tag">ADLS</span></div></td>
-            </tr>
-            <tr>
-              <td class="bom-idx">02</td>
-              <td class="bom-cat">Distributed Processing</td>
-              <td><div class="tag-row"><span class="tag">PySpark</span><span class="tag">Spark SQL</span><span class="tag">Spark Streaming</span><span class="tag">Kafka</span><span class="tag">Hadoop</span><span class="tag">Hive</span></div></td>
-            </tr>
-            <tr>
-              <td class="bom-idx">03</td>
-              <td class="bom-cat">Warehousing &amp; Databases</td>
-              <td><div class="tag-row"><span class="tag">Snowflake</span><span class="tag">Snowpipe</span><span class="tag">Amazon Redshift</span><span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">Amazon RDS</span></div></td>
-            </tr>
-            <tr>
-              <td class="bom-idx">04</td>
-              <td class="bom-cat">ETL / ELT &amp; Orchestration</td>
-              <td><div class="tag-row"><span class="tag">Apache Airflow</span><span class="tag">DBT</span><span class="tag">Talend</span><span class="tag">Informatica</span><span class="tag">SSIS</span></div></td>
-            </tr>
-            <tr>
-              <td class="bom-idx">05</td>
-              <td class="bom-cat">BI &amp; Analytics</td>
-              <td><div class="tag-row"><span class="tag">Power BI (DAX)</span><span class="tag">Tableau</span><span class="tag">Qlik Sense</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Spark ML</span></div></td>
-            </tr>
-            <tr>
-              <td class="bom-idx">06</td>
-              <td class="bom-cat">DevOps &amp; Languages</td>
-              <td><div class="tag-row"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">T-SQL</span><span class="tag">PL/SQL</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Bitbucket</span><span class="tag">Jenkins</span><span class="tag">CI/CD</span></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ARTICLES — document index ============ -->
-  <section class="section section--alt" id="articles">
-    <div class="sheet section-pad">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Blog</p>
+          <p class="eyebrow">Blog</p>
           <h2 class="section-title">From the blog</h2>
         </div>
-        <p class="section-note">Each post opens its own page. Add new ones by duplicating <code>articles/_template.html</code>.</p>
       </div>
-      <div class="article-list" id="articleList"><!-- injected by script.js --></div>
+      <div class="blog-grid" id="blogGrid"><!-- injected by script.js --></div>
     </div>
   </section>
 
-  <!-- ============ CONTACT — sign-off ============ -->
+  <!-- ============ CONTACT ============ -->
   <section class="section" id="contact">
-    <div class="sheet section-pad">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Sign-off</p>
-          <h2 class="section-title">Let's talk data</h2>
+    <div class="wrap">
+      <div class="contact reveal">
+        <div class="contact-blob"></div>
+        <div class="contact-inner">
+          <p class="eyebrow">Contact</p>
+          <h2 class="contact-title">Let's talk data</h2>
+          <p class="contact-sub">Open to relocation. Reach out about roles, collaborations, or anything pipeline-shaped.</p>
+          <div class="contact-grid">
+            <a class="contact-card" href="mailto:seerapumukesh@gmail.com">
+              <span class="contact-label">Email</span><span class="contact-value">seerapumukesh@gmail.com</span>
+            </a>
+            <a class="contact-card" href="tel:+15158174260">
+              <span class="contact-label">Phone</span><span class="contact-value">515&#8209;817&#8209;4260</span>
+            </a>
+            <a class="contact-card" href="https://www.linkedin.com/in/mukesh-msis-mba/" target="_blank" rel="noopener">
+              <span class="contact-label">LinkedIn</span><span class="contact-value">/in/mukesh&#8209;msis&#8209;mba</span>
+            </a>
+            <a class="contact-card" href="https://github.com/seerapumukesh" target="_blank" rel="noopener">
+              <span class="contact-label">GitHub</span><span class="contact-value">/seerapumukesh</span>
+            </a>
+          </div>
         </div>
-      </div>
-      <p class="hero-sub" style="margin-top:-24px;">Open to relocation. Reach out about roles, collaborations, or anything pipeline-shaped.</p>
-
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:seerapumukesh@gmail.com">
-          <span class="contact-label">Email</span>
-          <span class="contact-value">seerapumukesh@gmail.com</span>
-        </a>
-        <a class="contact-card" href="tel:+15158174260">
-          <span class="contact-label">Phone</span>
-          <span class="contact-value">515&#8209;817&#8209;4260</span>
-        </a>
-        <a class="contact-card" href="https://www.linkedin.com/in/mukesh-msis-mba/" target="_blank" rel="noopener">
-          <span class="contact-label">LinkedIn</span>
-          <span class="contact-value">/in/mukesh&#8209;msis&#8209;mba</span>
-        </a>
-        <a class="contact-card" href="https://github.com/seerapumukesh" target="_blank" rel="noopener">
-          <span class="contact-label">GitHub</span>
-          <span class="contact-value">/seerapumukesh</span>
-        </a>
-      </div>
-
-      <div class="signoff">
-        <div class="tb-cell"><p class="tb-label">Status</p><p class="tb-value">Open to relocation</p></div>
-        <div class="tb-cell"><p class="tb-label">Approved for</p><p class="tb-value">Data Engineering roles</p></div>
-        <div class="tb-cell"><p class="tb-label">Last updated</p><p class="tb-value" id="lastUpdated"></p></div>
       </div>
     </div>
   </section>
@@ -396,7 +316,7 @@
 </main>
 
 <footer class="footer">
-  <div class="sheet footer-inner">
+  <div class="wrap footer-inner">
     <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
     <a href="#top" class="footer-top">Back to top ↑</a>
   </div>
