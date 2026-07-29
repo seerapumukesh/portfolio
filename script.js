@@ -1,7 +1,9 @@
 // ---------- Projects ----------
 const projectGrid = document.getElementById('projectGrid');
 if (projectGrid && typeof PROJECTS !== 'undefined') {
-  projectGrid.innerHTML = PROJECTS.map(p => `
+  const limit = projectGrid.dataset.limit ? parseInt(projectGrid.dataset.limit, 10) : null;
+  const list = limit ? PROJECTS.slice(0, limit) : PROJECTS;
+  projectGrid.innerHTML = list.map(p => `
     <div class="project-card reveal">
       <div class="project-top">
         <span class="status-pill status-pill--live">${escapeHtml(p.status)}</span>
@@ -19,17 +21,32 @@ if (projectGrid && typeof PROJECTS !== 'undefined') {
 // ---------- Blog ----------
 const blogGrid = document.getElementById('blogGrid');
 if (blogGrid && typeof ARTICLES !== 'undefined') {
-  blogGrid.innerHTML = ARTICLES
-    .slice()
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .map(a => `
-      <a class="blog-card reveal" href="${a.url}">
-        <span class="blog-tag">${escapeHtml(a.tag)}</span>
-        <h3 class="blog-title">${escapeHtml(a.title)}</h3>
-        <p class="blog-excerpt">${escapeHtml(a.excerpt)}</p>
-        <div class="blog-meta"><span>${formatDate(a.date)}</span><span class="blog-go">Read →</span></div>
-      </a>
-    `).join('');
+  const limit = blogGrid.dataset.limit ? parseInt(blogGrid.dataset.limit, 10) : null;
+  const sorted = ARTICLES.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+  const list = limit ? sorted.slice(0, limit) : sorted;
+  const prefix = blogGrid.dataset.prefix || '';
+  blogGrid.innerHTML = list.map(a => `
+    <a class="blog-card reveal" href="${prefix}${a.url}">
+      <span class="blog-tag">${escapeHtml(a.tag)}</span>
+      <h3 class="blog-title">${escapeHtml(a.title)}</h3>
+      <p class="blog-excerpt">${escapeHtml(a.excerpt)}</p>
+      <div class="blog-meta"><span>${formatDate(a.date)}</span><span class="blog-go">Read →</span></div>
+    </a>
+  `).join('');
+}
+
+// ---------- Architecture ----------
+const archGrid = document.getElementById('archGrid');
+if (archGrid && typeof ARCH_LAYERS !== 'undefined') {
+  archGrid.innerHTML = `<div class="arch-flow"></div>` + ARCH_LAYERS.map(layer => `
+    <div class="arch-col">
+      <div class="arch-dot"></div>
+      <div class="arch-label">${escapeHtml(layer.label)}</div>
+      <div class="arch-card">
+        ${layer.tools.map(t => `<span class="arch-tool"><span class="dot"></span>${escapeHtml(t)}</span>`).join('')}
+      </div>
+    </div>
+  `).join('');
 }
 
 // ---------- Skills filter ----------
@@ -87,20 +104,25 @@ if (navToggle && navLinks) {
 }
 
 // ---------- scroll reveal ----------
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window && revealEls.length) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => io.observe(el));
-} else {
-  revealEls.forEach(el => el.classList.add('is-visible'));
+function initReveal() {
+  const revealEls = document.querySelectorAll('.reveal:not(.is-visible)');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
 }
+initReveal();
+// re-run once after dynamic content (projects/blog/arch/skills) is injected
+window.requestAnimationFrame(initReveal);
 
 // ---------- animated stat counters ----------
 const statEls = document.querySelectorAll('.stat-num');

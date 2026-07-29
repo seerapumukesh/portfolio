@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Mukesh Seerapu</title>
+<meta name="description" content="All posts by Mukesh Seerapu on data engineering, pipelines, and platform design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="profile.jpg" alt="" class="nav-brand-photo">Mukesh Seerapu</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#about">About</a>
+      <a href="index.html#architecture">Architecture</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#blog">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-resume" href="Mukesh_Seerapu_Data_Engineer.pdf" download>Resume</a>
+  </div>
+</header>
+
+<main>
+  <section class="listing-hero">
+    <div class="wrap">
+      <a href="index.html#blog" class="back-link">&#8592; Back to home</a>
+      <h1>All posts</h1>
+      <p>Notes on data modeling, orchestration, and performance from real projects.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="blog-grid" id="blogGrid"><!-- injected by script.js, no limit --></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
+    <a href="index.html" class="footer-top">&#8592; Home</a>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

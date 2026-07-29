@@ -14,9 +14,10 @@
 
 <header class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#home" class="nav-brand"><span class="nav-brand-mark"></span>Mukesh Seerapu</a>
+    <a href="#home" class="nav-brand"><img src="profile.jpg" alt="" class="nav-brand-photo">Mukesh Seerapu</a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#about">About</a>
+      <a href="#architecture">Architecture</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
@@ -59,38 +60,13 @@
           </div>
         </div>
 
-        <div class="hero-graphic">
+        <div class="hero-photo-wrap">
           <div class="float-badge float-badge--1"><span class="dot"></span>Snowflake</div>
           <div class="float-badge float-badge--2"><span class="dot"></span>Airflow</div>
           <div class="float-badge float-badge--3"><span class="dot"></span>AWS</div>
-
-          <div class="pipeline-card">
-            <div class="pipeline-card-top">
-              <div class="pipeline-dots"><span></span><span></span><span></span></div>
-              <span class="pipeline-label">data_pipeline.live</span>
-            </div>
-            <svg class="pipeline-svg" viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated diagram of data flowing from Ingest through Transform and Warehouse to Serve">
-              <g stroke="#E8DFC8" stroke-width="2" fill="none">
-                <path d="M60,50 L60,210" />
-                <path d="M60,50 C60,20 90,20 120,20 L340,20" />
-              </g>
-              <path class="pflow" d="M60,50 L60,210 M60,210 L360,210" stroke="#43AEEB" stroke-width="3" fill="none" stroke-linecap="round" />
-              <path class="pflow" d="M60,50 C60,20 90,20 120,20 L360,20" stroke="#FFC94A" stroke-width="3" fill="none" stroke-linecap="round" style="animation-delay:.4s" />
-
-              <circle class="pnode-pulse d1" cx="60" cy="50" r="9" fill="#43AEEB"/>
-              <text x="80" y="55" font-family="IBM Plex Mono, monospace" font-size="12" fill="#1D1B31" font-weight="600">Ingest</text>
-
-              <circle class="pnode-pulse d2" cx="360" cy="20" r="9" fill="#FFC94A"/>
-              <text x="290" y="14" font-family="IBM Plex Mono, monospace" font-size="12" fill="#1D1B31" font-weight="600">Transform</text>
-
-              <circle class="pnode-pulse d3" cx="360" cy="210" r="9" fill="#43AEEB"/>
-              <text x="270" y="235" font-family="IBM Plex Mono, monospace" font-size="12" fill="#1D1B31" font-weight="600">Warehouse</text>
-
-              <rect x="150" y="95" width="120" height="70" rx="14" fill="#F3EBD9" />
-              <text x="210" y="126" text-anchor="middle" font-family="Sora, sans-serif" font-size="13" font-weight="700" fill="#1D1B31">SERVE</text>
-              <text x="210" y="145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#4A4766">BI · API · ML</text>
-              <circle class="pnode-pulse d4" cx="165" cy="103" r="5" fill="#6DD4A0"/>
-            </svg>
+          <div class="float-badge float-badge--stat"><span class="num">10+</span><span class="lbl">Years Exp.</span></div>
+          <div class="hero-photo-ring">
+            <img src="profile.jpg" alt="Mukesh Seerapu" class="hero-photo">
           </div>
         </div>
       </div>
@@ -104,7 +80,7 @@
     </div>
   </section>
 
-  <!-- ============ ABOUT / WHAT I DO ============ -->
+  <!-- ============ ABOUT ============ -->
   <section class="section" id="about">
     <div class="wrap">
       <div class="section-head reveal">
@@ -114,22 +90,22 @@
       </div>
       <div class="about-grid">
         <div class="about-card reveal">
-          <div class="about-icon about-icon--sky">🏗️</div>
+          <div class="about-icon about-icon--blue">🏗️</div>
           <h3>Data Platform Architecture</h3>
           <p>Designing cloud warehouses and lakehouses that consolidate messy, multi-source data into one trusted layer.</p>
         </div>
         <div class="about-card reveal">
-          <div class="about-icon about-icon--sun">🔄</div>
+          <div class="about-icon about-icon--coral">🔄</div>
           <h3>Pipeline Engineering</h3>
           <p>Building ETL/ELT pipelines with Airflow, DBT, and Spark that are tested, monitored, and safe to change.</p>
         </div>
         <div class="about-card reveal">
-          <div class="about-icon about-icon--sky">☁️</div>
+          <div class="about-icon about-icon--blue">☁️</div>
           <h3>Cloud Data Infrastructure</h3>
           <p>AWS and Azure-native data infrastructure — S3/Redshift/EMR, ADF/Databricks/Synapse — built to scale.</p>
         </div>
         <div class="about-card reveal">
-          <div class="about-icon about-icon--sun">📊</div>
+          <div class="about-icon about-icon--coral">📊</div>
           <h3>Analytics Enablement</h3>
           <p>Semantic models and BI layers in Power BI and Qlik that cut analysts' SQL dependency.</p>
         </div>
@@ -137,22 +113,39 @@
     </div>
   </section>
 
+  <!-- ============ ARCHITECTURE ============ -->
+  <section class="section section--tint arch" id="architecture">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Architecture</p>
+        <h2 class="section-title">How data actually moves</h2>
+        <p class="section-sub">A typical platform I build — from raw source to something someone can query, chart, or ship into a model.</p>
+      </div>
+      <div class="arch-scroll reveal">
+        <div class="arch-grid" id="archGrid"><!-- injected by script.js --></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PROJECTS ============ -->
-  <section class="section section--tint" id="projects">
+  <section class="section" id="projects">
     <div class="wrap">
       <div class="section-head section-head--row reveal">
         <div>
           <p class="eyebrow">Projects</p>
-          <h2 class="section-title">Selected data engineering projects</h2>
+          <h2 class="section-title">Latest data engineering projects</h2>
         </div>
         <a href="https://github.com/seerapumukesh" target="_blank" rel="noopener" class="text-link">All repositories →</a>
       </div>
-      <div class="project-grid" id="projectGrid"><!-- injected by script.js --></div>
+      <div class="project-grid" id="projectGrid" data-limit="3"><!-- injected by script.js --></div>
+      <div class="section-foot reveal">
+        <a href="projects.html" class="btn btn-ghost">View all projects →</a>
+      </div>
     </div>
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
-  <section class="section" id="experience">
+  <section class="section section--tint" id="experience">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Experience</p>
@@ -260,7 +253,7 @@
   </section>
 
   <!-- ============ SKILLS ============ -->
-  <section class="section section--tint" id="skills">
+  <section class="section" id="skills">
     <div class="wrap">
       <div class="section-head reveal">
         <p class="eyebrow">Skills &amp; Profile</p>
@@ -273,15 +266,18 @@
   </section>
 
   <!-- ============ BLOG ============ -->
-  <section class="section" id="blog">
+  <section class="section section--tint" id="blog">
     <div class="wrap">
       <div class="section-head section-head--row reveal">
         <div>
           <p class="eyebrow">Blog</p>
-          <h2 class="section-title">From the blog</h2>
+          <h2 class="section-title">Latest from the blog</h2>
         </div>
       </div>
-      <div class="blog-grid" id="blogGrid"><!-- injected by script.js --></div>
+      <div class="blog-grid" id="blogGrid" data-limit="3"><!-- injected by script.js --></div>
+      <div class="section-foot reveal">
+        <a href="blog.html" class="btn btn-ghost">View all posts →</a>
+      </div>
     </div>
   </section>
 

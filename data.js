@@ -1,5 +1,6 @@
 /* ============================================================
-   EDIT ME — drives Projects, Blog, and the Skills filter.
+   EDIT ME — drives Projects, Blog, Skills filter, and the
+   Architecture diagram.
    ============================================================ */
 
 const PROJECTS = [
@@ -92,4 +93,13 @@ const SKILLS = [
   { name: "Python", cat: "DevOps" }, { name: "SQL", cat: "DevOps" }, { name: "T-SQL", cat: "DevOps" },
   { name: "PL/SQL", cat: "DevOps" }, { name: "Git", cat: "DevOps" }, { name: "GitHub", cat: "DevOps" },
   { name: "Bitbucket", cat: "DevOps" }, { name: "Jenkins", cat: "DevOps" }, { name: "CI/CD", cat: "DevOps" }
+];
+
+const ARCH_LAYERS = [
+  { label: "Sources", tools: ["SQL Server", "REST APIs", "Salesforce"] },
+  { label: "Ingest", tools: ["Kafka", "Azure Data Factory", "Fivetran"] },
+  { label: "Lake", tools: ["Amazon S3", "ADLS Gen2", "Delta Lake"] },
+  { label: "Process", tools: ["PySpark", "Databricks", "dbt"] },
+  { label: "Warehouse", tools: ["Snowflake", "Redshift", "Synapse"] },
+  { label: "Serve", tools: ["Power BI", "Tableau", "ML / APIs"] }
 ];
