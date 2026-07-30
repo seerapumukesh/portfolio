@@ -62,13 +62,46 @@
           </div>
         </div>
 
-        <div class="hero-photo-wrap">
+        <div class="hero-graphic">
           <div class="float-badge float-badge--1"><span class="dot"></span>Snowflake</div>
           <div class="float-badge float-badge--2"><span class="dot"></span>Airflow</div>
           <div class="float-badge float-badge--3"><span class="dot"></span>AWS</div>
-          <div class="float-badge float-badge--stat"><span class="num">10+</span><span class="lbl">Years Exp.</span></div>
-          <div class="hero-photo-ring">
-            <img src="profile.jpg" alt="Mukesh Seerapu" class="hero-photo">
+
+          <div class="pipeline-card">
+            <div class="pipeline-card-top">
+              <div class="pipeline-dots"><span></span><span></span><span></span></div>
+              <span class="pipeline-label">data_platform.live</span>
+            </div>
+            <svg class="pipeline-svg" viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Animated diagram of a data platform: Sources to Kafka to S3 to Databricks to Snowflake to Power BI">
+              <g stroke="#E7E9F5" stroke-width="2" fill="none">
+                <path d="M60,60 L380,60 L380,220 L60,220" />
+              </g>
+              <path class="pflow" d="M60,60 L380,60 L380,220 L60,220" stroke="#2F5EFF" stroke-width="3" fill="none" stroke-linecap="round" />
+
+              <circle class="pnode-pulse d1" cx="60" cy="60" r="8" fill="#2F5EFF"/>
+              <text x="60" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#12162B">SOURCES</text>
+              <text x="60" y="86" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B90A8">SQL Server</text>
+
+              <circle class="pnode-pulse d2" cx="220" cy="60" r="8" fill="#FF5A72"/>
+              <text x="220" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#12162B">INGEST</text>
+              <text x="220" y="86" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B90A8">Kafka</text>
+
+              <circle class="pnode-pulse d3" cx="380" cy="60" r="8" fill="#2F5EFF"/>
+              <text x="380" y="34" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#12162B">LAKE</text>
+              <text x="380" y="86" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B90A8">Amazon S3</text>
+
+              <circle class="pnode-pulse d4" cx="380" cy="220" r="8" fill="#FF5A72"/>
+              <text x="380" y="245" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#12162B">PROCESS</text>
+              <text x="380" y="199" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B90A8">Databricks</text>
+
+              <circle class="pnode-pulse d5" cx="220" cy="220" r="8" fill="#2F5EFF"/>
+              <text x="220" y="245" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#12162B">WAREHOUSE</text>
+              <text x="220" y="199" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B90A8">Snowflake</text>
+
+              <circle class="pnode-pulse d6" cx="60" cy="220" r="8" fill="#FF5A72"/>
+              <text x="60" y="245" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#12162B">SERVE</text>
+              <text x="60" y="199" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8B90A8">Power BI</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -290,6 +323,7 @@
     <div class="wrap">
       <div class="contact reveal">
         <div class="contact-blob"></div>
+        <img src="profile.jpg" alt="Mukesh Seerapu" class="contact-photo">
         <div class="contact-inner">
           <p class="eyebrow">Contact</p>
           <h2 class="contact-title">Let's talk data</h2>
