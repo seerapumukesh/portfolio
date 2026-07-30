@@ -28,7 +28,7 @@
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --maxw: 1180px;
+  --maxw: 1320px;
 }
 
 *{ box-sizing:border-box; }
@@ -183,7 +183,7 @@ code{ font-family: var(--font-mono); }
    =========================================================== */
 .section{ padding: 92px 0; position:relative; }
 .section--tint{ background: var(--bg-2); }
-.section-head{ max-width: 660px; margin: 0 0 48px; }
+.section-head{ max-width: 860px; margin: 0 0 48px; }
 .section-title{ font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight:700; letter-spacing:-0.01em; margin: 10px 0 12px; }
 .section-sub{ color: var(--ink-soft); font-size:1.02rem; }
 .section-head--row{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; }
