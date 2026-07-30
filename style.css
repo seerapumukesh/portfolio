@@ -109,8 +109,12 @@ code{ font-family: var(--font-mono); }
 .hero-hi{ font-weight:600; color: var(--ink-soft); margin:0 0 6px; }
 .hero-title{ font-size: clamp(2.3rem, 5vw, 3.6rem); font-weight:700; letter-spacing:-0.02em; line-height:1.06; margin-bottom:16px; }
 .hero-role{
-  display:inline-block; font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight:700; margin-bottom:18px;
+  display:block; font-size: clamp(1.05rem, 2.2vw, 1.35rem); font-weight:700; margin-bottom:18px; max-width:22ch;
   background: linear-gradient(90deg, var(--blue), var(--coral)); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-proof{
+  font-family: var(--font-mono); font-size:0.78rem; color: var(--ink-soft); background: var(--bg-2);
+  border: 1px solid var(--line); border-radius: 999px; padding: 10px 18px; display:inline-block; margin-bottom:28px;
 }
 .hero-sub{ color: var(--ink-soft); font-size:1.05rem; max-width:52ch; margin-bottom: 28px; }
 .hero-cta{ display:flex; gap:14px; margin-bottom:32px; flex-wrap:wrap; }
@@ -166,7 +170,7 @@ code{ font-family: var(--font-mono); }
 .section-head{ max-width: 660px; margin: 0 0 48px; }
 .section-title{ font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight:700; letter-spacing:-0.01em; margin: 10px 0 12px; }
 .section-sub{ color: var(--ink-soft); font-size:1.02rem; }
-.section-head--row{ display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; }
+.section-head--row{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap; }
 .text-link{ font-weight:700; font-size:0.88rem; color: var(--blue-deep); white-space:nowrap; }
 .text-link:hover{ text-decoration:underline; }
 .section-foot{ display:flex; justify-content:center; margin-top: 32px; }
@@ -188,25 +192,24 @@ code{ font-family: var(--font-mono); }
    =========================================================== */
 .arch{ position:relative; }
 .arch-scroll{ overflow-x:auto; padding-bottom: 12px; }
-.arch-grid{ display:grid; grid-template-columns: repeat(6, minmax(170px,1fr)); gap:16px; min-width: 900px; position:relative; padding-top:18px; }
+.arch-grid{ display:grid; grid-template-columns: repeat(7, minmax(160px,1fr)); gap:14px; min-width: 1080px; position:relative; padding-top:18px; }
 .arch-flow{
   position:absolute; top:36px; left:0; right:0; height:3px;
   background: repeating-linear-gradient(90deg, var(--blue) 0 10px, var(--coral) 10px 20px, transparent 20px 26px);
   background-size: 26px 100%; animation: archflow 1.6s linear infinite; z-index:0;
 }
-@keyframes archflow{ to{ background-position: -26px 0; } }
+@keyframes archflow{ to{ background-position: 26px 0; } }
 .arch-col{ position:relative; z-index:1; }
 .arch-dot{ width:14px; height:14px; border-radius:50%; background: var(--card); border:3px solid var(--blue); margin: 0 auto 14px; }
 .arch-col:nth-child(even) .arch-dot{ border-color: var(--coral); }
 .arch-label{ text-align:center; font-family: var(--font-mono); font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; color: var(--ink-dim); margin-bottom:12px; }
 .arch-card{ background: var(--card); border-radius: var(--radius-sm); box-shadow: var(--shadow); padding: 16px 14px; display:flex; flex-direction:column; gap:8px; }
 .arch-tool{
-  font-family: var(--font-mono); font-size:0.76rem; font-weight:600; color: var(--ink); background: var(--bg-2);
+  font-family: var(--font-mono); font-size:0.74rem; font-weight:600; color: var(--ink); background: var(--bg-2);
   border-radius:8px; padding:8px 10px; display:flex; align-items:center; gap:8px; transition: transform .15s ease, background .15s ease;
 }
 .arch-tool:hover{ transform: translateX(3px); background: var(--blue-tint); }
-.arch-tool .dot{ width:6px; height:6px; border-radius:50%; background: var(--blue); flex:none; }
-.arch-col:nth-child(even) .arch-tool .dot{ background: var(--coral); }
+.arch-tool-icon{ font-size:0.95rem; line-height:1; flex:none; }
 
 /* ===========================================================
    PROJECTS
@@ -222,6 +225,11 @@ code{ font-family: var(--font-mono); }
 .project-highlights{ display:flex; flex-direction:column; gap:8px; margin: 0 0 18px; flex:1; }
 .project-highlights li{ position:relative; padding-left:20px; color: var(--ink-soft); font-size:0.92rem; }
 .project-highlights li::before{ content:'✓'; position:absolute; left:0; color: var(--blue-deep); font-weight:700; font-size:0.85em; }
+.outcome-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.outcome-pill{
+  font-family: var(--font-mono); font-size:0.7rem; font-weight:600; color: var(--coral-deep);
+  background: var(--coral-tint); border-radius: 999px; padding: 5px 12px;
+}
 .project-card .tag-row{ margin-top:auto; }
 
 /* ===========================================================
@@ -278,7 +286,9 @@ code{ font-family: var(--font-mono); }
 .contact .eyebrow::before{ background: var(--coral); }
 .contact-title{ font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight:700; margin-bottom:16px; }
 .contact-sub{ color: #C4C8E0; font-size:1.02rem; max-width:52ch; margin-bottom:32px; }
-.contact-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:14px; }
+.contact-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; }
+@media (max-width: 760px){ .contact-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px){ .contact-grid{ grid-template-columns: 1fr; } }
 .contact-card{ display:flex; flex-direction:column; gap:6px; padding:18px 20px; border-radius: var(--radius-sm); background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); transition: background .15s ease, transform .15s ease; }
 .contact-card:hover{ background: rgba(255,255,255,0.12); transform: translateY(-2px); }
 .contact-label{ font-family: var(--font-mono); font-size:0.68rem; color:#9E9BB8; text-transform:uppercase; letter-spacing:0.06em; }

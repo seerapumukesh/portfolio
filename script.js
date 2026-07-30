@@ -13,6 +13,7 @@ if (projectGrid && typeof PROJECTS !== 'undefined') {
       <ul class="project-highlights">
         ${p.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
       </ul>
+      ${p.outcomes ? `<div class="outcome-row">${p.outcomes.map(o => `<span class="outcome-pill">${escapeHtml(o)}</span>`).join('')}</div>` : ''}
       <div class="tag-row">${p.stack.map(s => `<span class="tag">${escapeHtml(s)}</span>`).join('')}</div>
     </div>
   `).join('');
@@ -43,7 +44,7 @@ if (archGrid && typeof ARCH_LAYERS !== 'undefined') {
       <div class="arch-dot"></div>
       <div class="arch-label">${escapeHtml(layer.label)}</div>
       <div class="arch-card">
-        ${layer.tools.map(t => `<span class="arch-tool"><span class="dot"></span>${escapeHtml(t)}</span>`).join('')}
+        ${layer.tools.map(t => `<span class="arch-tool"><span class="arch-tool-icon">${t.icon}</span>${escapeHtml(t.name)}</span>`).join('')}
       </div>
     </div>
   `).join('');

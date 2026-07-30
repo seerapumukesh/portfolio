@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What makes a data platform ready for AI? — Mukesh Seerapu</title>
+<meta name="description" content="Before models, copilots, or retrieval systems can be trustworthy, teams need clean data contracts, lineage, quality checks, access controls, and clear ownership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand"><img src="../profile.jpg" alt="" class="nav-brand-photo">Mukesh Seerapu</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#architecture">Architecture</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#blog">Field Notes</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a class="nav-resume" href="../Mukesh_Seerapu_Data_Engineer.pdf" download>Resume</a>
+  </div>
+</header>
+
+<main class="article-detail">
+  <a href="../index.html#blog" class="back-link">&#8592; Back to field notes</a>
+  <span class="blog-tag">AI Data Infrastructure</span>
+  <h1>What makes a data platform ready for AI?</h1>
+  <p class="article-meta">November 2025 · Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      "AI-ready" gets used loosely. In practice, before a model, copilot, or
+      retrieval system can be trusted with your data, the data infrastructure
+      underneath it has to answer a few unglamorous questions first: where did
+      this value come from, has it changed, who's allowed to see it, and what
+      happens when it's wrong.
+    </p>
+
+    <h2>Data contracts, not just data</h2>
+    <p>
+      A model consuming a table it doesn't own is exposed to every silent
+      schema change upstream. Explicit contracts — expected columns, types,
+      and freshness — turn a breaking change into a caught test instead of a
+      confusing downstream failure three systems away.
+    </p>
+
+    <h2>Lineage that actually gets used</h2>
+    <p>
+      Lineage isn't a diagram for its own sake. When a metric looks wrong, the
+      first question is always "which sources fed this," and the second is
+      "when did that source last change." Platforms that can answer both
+      quickly are the ones people trust enough to build on.
+    </p>
+
+    <h2>Quality checks before the model, not after</h2>
+    <ul>
+      <li>Schema validation on ingestion, not just on the final table</li>
+      <li>Automated tests on transformation logic, run on every deploy</li>
+      <li>Freshness and volume anomaly checks, not just "did the job succeed"</li>
+    </ul>
+
+    <h2>Access control and ownership</h2>
+    <p>
+      Every dataset needs a named owner and a defined access boundary before
+      it's a candidate for any AI use case — not after something goes wrong.
+      This is the least exciting part of the checklist and the one most often
+      skipped under deadline pressure.
+    </p>
+
+    <h2>The infrastructure checklist</h2>
+    <p>
+      Clean, tested transformations. Documented lineage from source to
+      serving layer. Automated data-quality checks that run continuously, not
+      just at build time. Clear data ownership and access controls. None of
+      this is AI-specific — it's the same discipline that makes a BI
+      dashboard trustworthy. AI systems just make the cost of skipping it
+      more visible, faster.
+    </p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
+    <a href="../index.html" class="footer-top">&#8592; All field notes</a>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

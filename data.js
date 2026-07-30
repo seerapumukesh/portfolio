@@ -1,105 +1,159 @@
 /* ============================================================
-   EDIT ME — drives Projects, Blog, Skills filter, and the
-   Architecture diagram.
+   EDIT ME — drives Projects, Field Notes, Skills filter, and
+   the Architecture diagram.
    ============================================================ */
 
 const PROJECTS = [
   {
-    name: "Enterprise Snowflake Migration",
+    name: "Audit-ready Snowflake modernization",
     year: "2023",
     status: "Production",
     highlights: [
-      "Migrated SQL Server warehouse to Snowflake",
-      "Built dbt transformation layer",
-      "Automated testing",
-      "Implemented SCD Type II",
-      "Improved query performance by 45%"
+      "Modernized a legacy SQL Server warehouse into Snowflake for regulated reporting",
+      "Built a dbt transformation layer with automated tests and SCD Type 2 history",
+      "Improved query performance by 45% while preserving traceable historical records"
     ],
+    outcomes: ["45% faster analytical queries", "Automated data-quality testing", "Audit-ready historical modeling"],
     stack: ["Snowflake", "DBT", "SQL Server", "Airflow", "SQL"]
   },
   {
-    name: "Real-time Financial Data Platform",
+    name: "Event-driven financial reporting platform",
     year: "2023 — 2024",
     status: "Production",
     highlights: [
-      "Built event-driven ingestion using REST APIs",
-      "Automated Azure Data Factory pipelines",
-      "Enabled near real-time dashboards"
+      "Designed Azure-based ingestion pipelines bringing operational financial data from REST APIs into governed reporting datasets",
+      "Automated orchestration in Azure Data Factory to improve data freshness",
+      "Reduced manual reporting work through end-to-end automation"
     ],
-    stack: ["Azure Data Factory", "REST APIs", "Event-Driven", "Power BI"]
+    outcomes: ["Automated source-to-report workflow", "Event-driven ingestion", "Faster reporting availability"],
+    stack: ["Azure Data Factory", "REST APIs", "Event-Driven Architecture", "Power BI"]
   },
   {
-    name: "Analytics Data Platform",
+    name: "Self-service analytics data products",
     year: "2024 — Present",
     status: "Production",
     highlights: [
-      "Designed reusable semantic datasets",
-      "Built Power BI reporting layer",
-      "Reduced analyst SQL dependency"
+      "Created reusable semantic datasets that gave business users consistent, trustworthy metrics",
+      "Built a governed Power BI reporting layer on top of the semantic models",
+      "Removed dependency on ad-hoc SQL requests for common business questions"
     ],
+    outcomes: ["Reusable semantic models", "Governed business metrics", "Less analyst SQL dependency"],
     stack: ["Power BI", "DAX", "Snowflake", "SQL"]
+  },
+  {
+    name: "Streaming booking-data platform",
+    year: "2018 — 2021",
+    status: "Production",
+    highlights: [
+      "Built real-time pipelines with Kafka and Spark Streaming to process booking events",
+      "Served low-latency aggregates through Cassandra for downstream services",
+      "Supported a high-growth e-commerce environment through 5x booking volume growth"
+    ],
+    outcomes: ["Real-time event processing", "Low-latency serving layer", "Scaled through 5x growth"],
+    stack: ["Kafka", "Spark Streaming", "Scala", "Cassandra", "Azure"]
   }
 ];
 
 const ARTICLES = [
   {
-    title: "Designing Slowly Changing Dimensions that survive audits",
+    title: "SCD Type 2 is not enough: designing history that stands up to an audit",
     excerpt:
-      "Notes on SCD Type 2 modeling patterns for regulated financial data — what breaks in practice and how to design history tracking that holds up under a compliance review.",
+      "An implementation-focused guide to historical data modeling in regulated systems — validity windows, late-arriving changes, source traceability, and the tests that prevent silent history errors.",
     date: "2026-03-01",
     tag: "Data Modeling",
     url: "articles/scd-that-survive-audits.html"
   },
   {
-    title: "Airflow DAGs vs. cron: what actually changes at scale",
+    title: "Airflow versus cron: the operational shift that matters at 30+ daily jobs",
     excerpt:
-      "A field comparison from replacing cron-based scheduling with dependency-aware Airflow orchestration across 30+ daily jobs.",
+      "The real value of orchestration is not scheduling. It's visible dependencies, dependable backfills, meaningful alerting, and a clearer operating model for data teams.",
     date: "2026-01-14",
     tag: "Orchestration",
     url: "articles/airflow-vs-cron.html"
   },
   {
-    title: "What a 45% query speedup actually took",
+    title: "How we improved Snowflake query performance by 45%",
     excerpt:
-      "A breakdown of the clustering, warehouse sizing, and transformation changes behind the Snowflake migration's performance gain.",
+      "A practical breakdown of warehouse sizing, clustering strategy, model design, and workload analysis — plus the trade-offs behind a measurable performance improvement.",
     date: "2026-05-10",
     tag: "Performance",
     url: "articles/snowflake-performance.html"
+  },
+  {
+    title: "What makes a data platform ready for AI?",
+    excerpt:
+      "Before models, copilots, or retrieval systems can be trustworthy, teams need clean data contracts, lineage, quality checks, access controls, and clear ownership. Here's the infrastructure checklist.",
+    date: "2025-11-01",
+    tag: "AI Data Infrastructure",
+    url: "articles/ai-ready-data-platform.html"
   }
 ];
 
 const SKILLS = [
-  { name: "AWS", cat: "Cloud" }, { name: "S3", cat: "Cloud" }, { name: "EC2", cat: "Cloud" },
-  { name: "EMR", cat: "Cloud" }, { name: "Redshift", cat: "Cloud" }, { name: "Lambda", cat: "Cloud" },
-  { name: "Glue", cat: "Cloud" }, { name: "Kinesis", cat: "Cloud" }, { name: "Athena", cat: "Cloud" },
-  { name: "DynamoDB", cat: "Cloud" }, { name: "Azure Data Factory", cat: "Cloud" }, { name: "Databricks", cat: "Cloud" },
-  { name: "Synapse Analytics", cat: "Cloud" }, { name: "ADLS", cat: "Cloud" },
+  // Cloud data platforms
+  { name: "AWS", cat: "Cloud data platforms" }, { name: "S3", cat: "Cloud data platforms" },
+  { name: "EC2", cat: "Cloud data platforms" }, { name: "EMR", cat: "Cloud data platforms" },
+  { name: "Redshift", cat: "Cloud data platforms" }, { name: "Lambda", cat: "Cloud data platforms" },
+  { name: "Glue", cat: "Cloud data platforms" }, { name: "Athena", cat: "Cloud data platforms" },
+  { name: "DynamoDB", cat: "Cloud data platforms" }, { name: "Azure Data Factory", cat: "Cloud data platforms" },
+  { name: "Databricks", cat: "Cloud data platforms" }, { name: "Azure Synapse", cat: "Cloud data platforms" },
+  { name: "ADLS", cat: "Cloud data platforms" }, { name: "Snowflake", cat: "Cloud data platforms" },
+  { name: "Amazon RDS", cat: "Cloud data platforms" },
 
-  { name: "PySpark", cat: "Processing" }, { name: "Spark SQL", cat: "Processing" },
-  { name: "Spark Streaming", cat: "Processing" }, { name: "Kafka", cat: "Processing" },
-  { name: "Hadoop", cat: "Processing" }, { name: "Hive", cat: "Processing" },
+  // Data modeling and transformation
+  { name: "DBT", cat: "Data modeling & transformation" }, { name: "SCD Type 2 Modeling", cat: "Data modeling & transformation" },
+  { name: "SQL", cat: "Data modeling & transformation" }, { name: "T-SQL", cat: "Data modeling & transformation" },
+  { name: "PL/SQL", cat: "Data modeling & transformation" }, { name: "Talend", cat: "Data modeling & transformation" },
+  { name: "Informatica", cat: "Data modeling & transformation" }, { name: "SSIS", cat: "Data modeling & transformation" },
+  { name: "SQL Server", cat: "Data modeling & transformation" }, { name: "PostgreSQL", cat: "Data modeling & transformation" },
 
-  { name: "Snowflake", cat: "Warehousing" }, { name: "Snowpipe", cat: "Warehousing" },
-  { name: "Amazon Redshift", cat: "Warehousing" }, { name: "PostgreSQL", cat: "Warehousing" },
-  { name: "SQL Server", cat: "Warehousing" }, { name: "Amazon RDS", cat: "Warehousing" },
+  // Distributed processing and streaming
+  { name: "PySpark", cat: "Distributed processing & streaming" }, { name: "Spark SQL", cat: "Distributed processing & streaming" },
+  { name: "Spark Streaming", cat: "Distributed processing & streaming" }, { name: "Kafka", cat: "Distributed processing & streaming" },
+  { name: "Kinesis", cat: "Distributed processing & streaming" }, { name: "Hadoop", cat: "Distributed processing & streaming" },
+  { name: "Hive", cat: "Distributed processing & streaming" }, { name: "Scala", cat: "Distributed processing & streaming" },
+  { name: "Cassandra", cat: "Distributed processing & streaming" },
 
-  { name: "Apache Airflow", cat: "Orchestration" }, { name: "DBT", cat: "Orchestration" },
-  { name: "Talend", cat: "Orchestration" }, { name: "Informatica", cat: "Orchestration" },
-  { name: "SSIS", cat: "Orchestration" },
+  // Orchestration and reliability
+  { name: "Apache Airflow", cat: "Orchestration & reliability" }, { name: "CI/CD", cat: "Orchestration & reliability" },
+  { name: "Git", cat: "Orchestration & reliability" }, { name: "GitHub", cat: "Orchestration & reliability" },
+  { name: "Bitbucket", cat: "Orchestration & reliability" }, { name: "Jenkins", cat: "Orchestration & reliability" },
 
-  { name: "Power BI (DAX)", cat: "BI" }, { name: "Tableau", cat: "BI" }, { name: "Qlik Sense", cat: "BI" },
-  { name: "Pandas", cat: "BI" }, { name: "NumPy", cat: "BI" }, { name: "Spark ML", cat: "BI" },
+  // Data quality, governance & observability
+  { name: "Automated Data Testing", cat: "Data quality, governance & observability" },
+  { name: "Schema Validation", cat: "Data quality, governance & observability" },
+  { name: "Data Lineage", cat: "Data quality, governance & observability" },
+  { name: "dbt Tests", cat: "Data quality, governance & observability" },
 
-  { name: "Python", cat: "DevOps" }, { name: "SQL", cat: "DevOps" }, { name: "T-SQL", cat: "DevOps" },
-  { name: "PL/SQL", cat: "DevOps" }, { name: "Git", cat: "DevOps" }, { name: "GitHub", cat: "DevOps" },
-  { name: "Bitbucket", cat: "DevOps" }, { name: "Jenkins", cat: "DevOps" }, { name: "CI/CD", cat: "DevOps" }
+  // Analytics enablement
+  { name: "Power BI (DAX)", cat: "Analytics enablement" }, { name: "Qlik Sense", cat: "Analytics enablement" },
+  { name: "Pandas", cat: "Analytics enablement" }, { name: "NumPy", cat: "Analytics enablement" },
+
+  // AI/ML data readiness
+  { name: "AWS SageMaker", cat: "AI/ML data readiness" }, { name: "Spark ML", cat: "AI/ML data readiness" },
+  { name: "Python", cat: "AI/ML data readiness" }
 ];
 
 const ARCH_LAYERS = [
-  { label: "Sources", tools: ["SQL Server", "REST APIs", "Salesforce"] },
-  { label: "Ingest", tools: ["Kafka", "Azure Data Factory", "Fivetran"] },
-  { label: "Lake", tools: ["Amazon S3", "ADLS Gen2", "Delta Lake"] },
-  { label: "Process", tools: ["PySpark", "Databricks", "dbt"] },
-  { label: "Warehouse", tools: ["Snowflake", "Redshift", "Synapse"] },
-  { label: "Serve", tools: ["Power BI", "Tableau", "ML / APIs"] }
+  { label: "Sources", tools: [
+    { name: "SQL Server", icon: "🗄️" }, { name: "REST APIs", icon: "🔌" }, { name: "Azure SQL", icon: "☁️" }
+  ]},
+  { label: "Ingest", tools: [
+    { name: "Kafka", icon: "📡" }, { name: "Azure Data Factory", icon: "🏭" }, { name: "AWS Kinesis", icon: "🔄" }
+  ]},
+  { label: "Lake", tools: [
+    { name: "Amazon S3", icon: "🪣" }, { name: "ADLS Gen2", icon: "🗃️" }, { name: "Blob Storage", icon: "📦" }
+  ]},
+  { label: "Process", tools: [
+    { name: "PySpark", icon: "⚡" }, { name: "Databricks", icon: "🧱" }, { name: "dbt", icon: "🛠️" }
+  ]},
+  { label: "Warehouse", tools: [
+    { name: "Snowflake", icon: "❄️" }, { name: "Redshift", icon: "🟥" }, { name: "Azure Synapse", icon: "🔷" }
+  ]},
+  { label: "Govern", tools: [
+    { name: "dbt Tests", icon: "✅" }, { name: "Schema Validation", icon: "🧩" }, { name: "Data Lineage", icon: "🔍" }
+  ]},
+  { label: "Serve", tools: [
+    { name: "Power BI", icon: "📊" }, { name: "Qlik Sense", icon: "📈" }, { name: "ML / APIs", icon: "🤖" }
+  ]}
 ];
