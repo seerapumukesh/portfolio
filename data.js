@@ -5,52 +5,59 @@
 
 const PROJECTS = [
   {
-    name: "Audit-ready Snowflake modernization",
-    year: "2023",
+    name: "Enterprise Banking Data Platform",
+    year: "2023 — Present",
     status: "Production",
     highlights: [
-      "Modernized a legacy SQL Server warehouse into Snowflake for regulated reporting",
-      "Built a dbt transformation layer with automated tests and SCD Type 2 history",
-      "Improved query performance by 45% while preserving traceable historical records"
+      "Consolidated core banking, lending, and member data — plus vendor files and REST APIs — into one centralized, governed platform",
+      "Built a metadata-driven ingestion framework so onboarding a new source meant configuration, not a new pipeline",
+      "Orchestrated ingestion with Azure Data Factory and Talend, landed raw data in Azure Blob Storage, and modeled it in Snowflake",
+      "Organized transformations in dbt across staging, intermediate, and mart layers with automated tests and lineage",
+      "Designed for safe recovery — watermarks, run IDs, and reconciliation meant a failed job could restart without losing or duplicating data"
     ],
-    outcomes: ["45% faster analytical queries", "Automated data-quality testing", "Audit-ready historical modeling"],
-    stack: ["Snowflake", "DBT", "SQL Server", "Airflow", "SQL"]
+    outcomes: ["Metadata-driven source onboarding", "Automated data-quality testing", "Recoverable, auditable pipeline runs"],
+    stack: ["Azure Data Factory", "Talend", "Snowflake", "DBT", "Azure Blob Storage", "Python", "Power BI"]
   },
   {
-    name: "Event-driven financial reporting platform",
+    name: "Annuities Data Platform",
     year: "2023 — 2024",
     status: "Production",
     highlights: [
-      "Designed Azure-based ingestion pipelines bringing operational financial data from REST APIs into governed reporting datasets",
-      "Automated orchestration in Azure Data Factory to improve data freshness",
-      "Reduced manual reporting work through end-to-end automation"
+      "Modernized annuity policy, premium, withdrawal, and valuation data processing, moving key workloads from on-prem infrastructure to AWS",
+      "Orchestrated batch pipelines with Airflow across S3, Redshift, DynamoDB, and RDS/PostgreSQL",
+      "Moved streaming ingestion from Kafka to Kinesis to reduce operational overhead for a team not staffed to run Kafka",
+      "Ran large-scale transformations on Spark via EMR, with Lambda handling lightweight event-driven processing",
+      "Built reusable Redshift views and stored procedures for actuarial, finance, and investment reporting, with reconciliation that could prove the warehouse matched the source down to the affected policy or batch"
     ],
-    outcomes: ["Automated source-to-report workflow", "Event-driven ingestion", "Faster reporting availability"],
-    stack: ["Azure Data Factory", "REST APIs", "Event-Driven Architecture", "Power BI"]
+    outcomes: ["AWS-native batch + streaming platform", "Reduced streaming operational complexity", "Auditable financial reconciliation"],
+    stack: ["AWS", "Amazon Redshift", "Apache Airflow", "Amazon Kinesis", "Spark on EMR", "PostgreSQL (RDS)", "DynamoDB"]
   },
   {
-    name: "Self-service analytics data products",
-    year: "2024 — Present",
+    name: "Enterprise Lakehouse Modernization",
+    year: "2022 — 2023",
     status: "Production",
     highlights: [
-      "Created reusable semantic datasets that gave business users consistent, trustworthy metrics",
-      "Built a governed Power BI reporting layer on top of the semantic models",
-      "Removed dependency on ad-hoc SQL requests for common business questions"
+      "Designed a medallion lakehouse (Bronze/Silver/Gold) on Azure Data Lake Storage Gen2 and Delta Lake to replace duplicated, point-to-point ETL jobs",
+      "Used Azure Data Factory for batch orchestration and Databricks (PySpark/Spark SQL) for scalable transformation",
+      "Streamed selected real-time events through Kafka into Delta tables via Structured Streaming",
+      "Applied CDC, SCD Type 2, and data-quality rules in the Silver layer to produce trusted, conformed datasets for BI and data science",
+      "Made every run idempotent and replayable — immutable raw data, run IDs, Delta MERGE, and reconciliation before watermarks advanced"
     ],
-    outcomes: ["Reusable semantic models", "Governed business metrics", "Less analyst SQL dependency"],
-    stack: ["Power BI", "DAX", "Snowflake", "SQL"]
+    outcomes: ["Unified batch + streaming platform", "Reusable metadata-driven ingestion", "Idempotent, replayable pipeline runs"],
+    stack: ["Azure Databricks", "Delta Lake", "Azure Data Factory", "ADLS Gen2", "Kafka", "PySpark", "Unity Catalog"]
   },
   {
-    name: "Streaming booking-data platform",
-    year: "2018 — 2021",
+    name: "Real-Time Fraud Detection & Decisioning Platform",
+    year: "2021 — 2022",
     status: "Production",
     highlights: [
-      "Built real-time pipelines with Kafka and Spark Streaming to process booking events",
-      "Served low-latency aggregates through Cassandra for downstream services",
-      "Supported a high-growth e-commerce environment through 5x booking volume growth"
+      "Built the event pipeline behind a real-time transaction decisioning system that had to approve, block, step-up, or queue transactions for manual review in under a few seconds",
+      "Owned the Kafka event contracts, stream processing, and low-latency feature computation that fraud rules and ML scoring depended on",
+      "Maintained durable, replayable raw transaction history and a full decision audit trail — every input, feature, score, and rule hit — for compliance and model retraining",
+      "Built monitoring around stream lag, decision latency, and data quality so degraded feature freshness was caught before it affected a decision"
     ],
-    outcomes: ["Real-time event processing", "Low-latency serving layer", "Scaled through 5x growth"],
-    stack: ["Kafka", "Spark Streaming", "Scala", "Cassandra", "Azure"]
+    outcomes: ["Sub-second transaction decisioning", "Full decision audit trail", "Real-time feature pipeline for ML scoring"],
+    stack: ["Kafka", "Spark Structured Streaming", "Redis", "Python", "Amazon S3", "Snowflake"]
   }
 ];
 
