@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Designing Slowly Changing Dimensions that survive audits — Mukesh Seerapu</title>
+<title>Designing Slowly Changing Dimensions that survive an audit — Mukesh Seerapu</title>
+<meta name="description" content="Hash-based change detection, dbt snapshots vs. custom SCD logic, and why the watermark should only move after reconciliation passes.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Designing Slowly Changing Dimensions that survive an audit">
+<meta property="og:description" content="Hash-based change detection, dbt snapshots vs. custom SCD logic, and why the watermark should only move after reconciliation passes.">
+<meta property="og:image" content="../og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Designing Slowly Changing Dimensions that survive an audit">
+<meta name="twitter:description" content="Hash-based change detection, dbt snapshots vs. custom SCD logic, and why the watermark should only move after reconciliation passes.">
+<meta name="twitter:image" content="../og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,42 +41,70 @@
 <main class="article-detail">
   <a href="../index.html#blog" class="back-link">&#8592; Back to the playbook</a>
   <span class="blog-tag">Data Modeling</span>
-  <h1>Designing Slowly Changing Dimensions that survive audits</h1>
-  <p class="article-meta">March 2026 · Mukesh Seerapu</p>
+  <h1>Designing Slowly Changing Dimensions that survive an audit</h1>
+  <p class="article-meta">Mukesh Seerapu</p>
 
   <div class="prose">
     <p>
-      Regulated financial data has a habit of exposing lazy dimension modeling. A
-      customer's address changes, a credit tier gets recalculated, an account
-      status flips — and six months later an auditor asks what the record looked
-      like on a specific date. If your warehouse only ever holds the current
-      state, that question has no good answer.
+      On a regulated banking data platform, "what did this member's record look
+      like on a specific date" isn't a hypothetical question — it's the kind of
+      thing an auditor asks, or a dispute-resolution team needs answered exactly,
+      not approximately. If your warehouse only keeps the current state, you
+      don't have an answer. That's the whole case for SCD Type 2, and also
+      where most implementations quietly go wrong.
     </p>
 
-    <h2>Why Type 2 earns its complexity</h2>
+    <h2>Detecting a real change, not a formatting difference</h2>
     <p>
-      SCD Type 2 keeps every version of a row with effective and expiry dates,
-      so a report run "as of" a past date reconstructs exactly what was true
-      then. It costs more storage and more transformation logic than simply
-      overwriting rows, but for anything touching compliance reporting, that
-      cost is the whole point — it's what makes the history defensible.
+      The first problem is deciding whether a row actually changed. Comparing
+      every tracked column individually gets unwieldy fast, so a cleaner
+      approach is hashing the tracked attributes into a single value —
+      concatenate the columns you care about, coalesce nulls to a consistent
+      placeholder, and hash the result. A new row's hash either matches the
+      current version or it doesn't. No column-by-column diff logic scattered
+      across every model.
     </p>
 
-    <h2>Where it actually breaks in practice</h2>
-    <ul>
-      <li>Late-arriving source data that needs to be inserted retroactively into an already-closed date range</li>
-      <li>Multiple source systems disagreeing on when a change "actually" happened</li>
-      <li>Surrogate keys that aren't stable across a full reload, silently breaking history joins</li>
-      <li>Tests that check row counts but never check that effective-dated ranges don't overlap</li>
-    </ul>
-
-    <h2>What held up under review</h2>
+    <h2>dbt snapshots vs. custom SCD logic</h2>
     <p>
-      The pattern that survived an actual compliance review combined dbt
-      snapshots for the mechanical Type 2 tracking with explicit tests asserting
-      no overlapping date ranges per natural key, plus a small reconciliation
-      job that flagged any record where the source system's own "last modified"
-      timestamp didn't line up with when we recorded the change.
+      dbt's built-in snapshot feature handles the mechanical part of Type 2
+      well — it tracks effective and expiration dates automatically once you
+      give it a strategy and the columns to check. It's the right default. The
+      case for writing custom SCD logic instead shows up when you need tighter
+      control than a snapshot gives you: backdated corrections that need to
+      slot into an already-closed date range, enterprise-specific effective-dating
+      rules, or performance tuning on a dimension too large for a snapshot's
+      default behavior. Start with the built-in snapshot. Only reach for custom
+      logic when a specific requirement forces it.
+    </p>
+
+    <h2>The fact table needs the same discipline</h2>
+    <p>
+      Dimension history is half the problem. Fact loading has to be safe to
+      replay, which means a MERGE keyed on a stable business identifier (a
+      transaction ID, not a surrogate key generated on load) — update if the
+      source's own updated-timestamp is newer than what's already there, insert
+      if it doesn't exist. Re-running a batch after a partial failure shouldn't
+      double-count a single transaction, and this pattern is what makes that
+      true.
+    </p>
+
+    <h2>The part that actually gets you through an audit</h2>
+    <p>
+      None of the above matters if a bad batch can quietly corrupt history. The
+      pattern that held up: capture a fixed upper boundary for the batch window
+      at the start of extraction (not an open-ended "greater than last
+      watermark," since new changes can land mid-run and create an
+      ill-defined batch), validate the landed data before it touches anything
+      downstream, and only advance the watermark after reconciliation — source
+      count vs. staged count vs. inserted/updated count — actually passes. A
+      failed validation routes to quarantine instead of the pipeline. On the
+      next run, nothing has silently drifted, and the watermark tells you
+      precisely where the pipeline stands. That combination — hash-based
+      detection, discipline about which tool does the SCD tracking, idempotent
+      fact loads, and a watermark that can't advance on unverified data — is
+      what actually survives someone asking "prove this number was right on
+      that date."
     </p>
   </div>
 </main>

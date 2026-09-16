@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What a 45% query speedup actually took — Mukesh Seerapu</title>
+<title>Before you scale the warehouse, find out where the time actually goes — Mukesh Seerapu</title>
+<meta name="description" content="A slow pipeline isn't a warehouse-sizing problem until you've measured where the runtime actually goes. A breakdown of the method and the fixes that followed.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Before you scale the warehouse, find out where the time actually goes">
+<meta property="og:description" content="A slow pipeline isn't a warehouse-sizing problem until you've measured where the runtime actually goes. A breakdown of the method and the fixes that followed.">
+<meta property="og:image" content="../og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Before you scale the warehouse, find out where the time actually goes">
+<meta name="twitter:description" content="A slow pipeline isn't a warehouse-sizing problem until you've measured where the runtime actually goes. A breakdown of the method and the fixes that followed.">
+<meta name="twitter:image" content="../og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,46 +41,59 @@
 <main class="article-detail">
   <a href="../index.html#blog" class="back-link">&#8592; Back to the playbook</a>
   <span class="blog-tag">Performance</span>
-  <h1>What a 45% query speedup actually took</h1>
-  <p class="article-meta">May 2026 · Mukesh Seerapu</p>
+  <h1>Before you scale the warehouse, find out where the time actually goes</h1>
+  <p class="article-meta">Mukesh Seerapu</p>
 
   <div class="prose">
     <p>
-      "Improved query performance by 45%" is the kind of line that shows up on
-      a resume without the work behind it. In practice it wasn't one change —
-      it was three separate, smaller fixes that compounded, found by actually
-      reading query profiles instead of guessing.
+      A pipeline slowing down usually gets the same first reaction: bump the
+      warehouse size. Sometimes that's right. Often it's an expensive way to
+      make a bad query run on more expensive compute, and the actual bottleneck
+      never moves. The fix that works is boring and always the same first
+      step — break the total runtime into its stages before touching anything.
     </p>
 
-    <h2>1. Clustering keys that matched real filter patterns</h2>
+    <h2>What the breakdown actually looked like</h2>
     <p>
-      The original migration copied table structures over close to as-is from
-      SQL Server. Snowflake's micro-partitioning rewards clustering on the
-      columns queries actually filter and join on, which cut the amount of
-      data scanned per query significantly on the largest fact tables.
+      On one recurring batch, the total run time was split roughly like this:
+      8 minutes for source extraction, 3 minutes writing to blob storage, 4
+      minutes on the Snowflake COPY, 38 minutes on a dbt mart model, and 2
+      minutes reconciling counts. Without measuring the stages separately, the
+      instinct is to blame "Snowflake" as a whole and scale the warehouse. With
+      the breakdown, it's obvious the mart model — one specific dbt model — was
+      responsible for 80% of the runtime, and everything else was already
+      fine.
     </p>
 
-    <h2>2. Warehouse sizing per workload</h2>
+    <h2>Where the 38 minutes actually went</h2>
     <p>
-      Running ad-hoc analyst queries and scheduled dbt transformation jobs on
-      the same warehouse meant either paying for idle compute or queuing
-      behind long-running jobs. Splitting into separate warehouses sized for
-      each workload removed most of the queuing delay analysts were seeing.
+      Once a single model is the target, the Snowflake query profile tells you
+      which of a handful of usual suspects is responsible: scan volume, a join
+      exploding row counts, spilling to disk, queueing behind other workloads
+      on the same warehouse, or the model simply recomputing something on
+      every run that didn't need to change. In this case it was a mix of two:
+      the model was fully rebuilding a large table on every run instead of
+      processing only what changed, and it shared a warehouse with ad-hoc
+      analyst queries that created contention during the overlap window.
     </p>
 
-    <h2>3. Materializing the transformations that got queried the most</h2>
-    <p>
-      A handful of dbt models were being recomputed as views on every query.
-      Converting the ones with heavy read traffic into incremental tables —
-      refreshed on schedule instead of on every read — moved that cost out of
-      the interactive query path entirely.
-    </p>
+    <h2>The fixes, in order of what actually moved the number</h2>
+    <ul>
+      <li>Converted the model to an incremental materialization keyed on the source's updated-timestamp, so only changed rows were reprocessed</li>
+      <li>Split ingestion/transformation workloads onto a separate warehouse from ad-hoc BI queries, removing the contention</li>
+      <li>Enabled auto-suspend so idle compute stopped costing money between runs, with auto-resume so scheduled jobs weren't affected</li>
+      <li>Reviewed whether clustering would help — and didn't add it, since pruning on the filtered columns was already reasonable and clustering has a real maintenance cost on a table that size</li>
+    </ul>
 
-    <h2>What mattered most</h2>
+    <h2>The part worth remembering</h2>
     <p>
-      None of these three individually was dramatic. What made a visible,
-      reportable difference was doing all three together and measuring before
-      and after with the same representative query set.
+      Warehouse size was never the actual lever here. Scaling compute on a
+      query that's recomputing an entire table from scratch just makes an
+      inefficient query finish a bit faster while still doing unnecessary
+      work, and it makes that mistake more expensive, not less present. The
+      breakdown is what turns "the pipeline got slow" into a specific, fixable
+      claim — and it's the same first step regardless of what the actual
+      bottleneck turns out to be.
     </p>
   </div>
 </main>

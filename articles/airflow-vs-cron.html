@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Airflow DAGs vs. cron: what actually changes at scale — Mukesh Seerapu</title>
+<title>Airflow vs. cron: what actually changes at scale — Mukesh Seerapu</title>
+<meta name="description" content="Cron starts a script. It doesn't model dependencies, retries, backfills, or SLAs. Here's what changed after moving 30+ daily jobs onto Airflow.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Airflow vs. cron: what actually changes at scale">
+<meta property="og:description" content="Cron starts a script. It doesn't model dependencies, retries, backfills, or SLAs. Here's what changed after moving 30+ daily jobs onto Airflow.">
+<meta property="og:image" content="../og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Airflow vs. cron: what actually changes at scale">
+<meta name="twitter:description" content="Cron starts a script. It doesn't model dependencies, retries, backfills, or SLAs. Here's what changed after moving 30+ daily jobs onto Airflow.">
+<meta name="twitter:image" content="../og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,42 +41,61 @@
 <main class="article-detail">
   <a href="../index.html#blog" class="back-link">&#8592; Back to the playbook</a>
   <span class="blog-tag">Orchestration</span>
-  <h1>Airflow DAGs vs. cron: what actually changes at scale</h1>
-  <p class="article-meta">January 2026 · Mukesh Seerapu</p>
+  <h1>Airflow vs. cron: what actually changes at scale</h1>
+  <p class="article-meta">Mukesh Seerapu</p>
 
   <div class="prose">
     <p>
-      Cron works fine right up until job #12 depends on job #7 finishing, job
-      #7 depends on a file landing from an external partner, and that file
-      shows up late twice a month. At that point you're not scheduling jobs
-      anymore — you're guessing at timing and padding every start time with
-      buffer minutes that either aren't enough or waste hours.
+      Cron can start a script at a time. That's genuinely all it does. On an
+      annuities data platform coordinating dozens of daily batch jobs across a
+      warehouse, a lake, and a couple of NoSQL stores, "start a script at a
+      time" stopped being enough well before we hit 30 jobs — not because cron
+      broke, but because nothing about it could answer "which job failed, why,
+      and what do I need to rerun."
     </p>
 
-    <h2>The real shift isn't the UI</h2>
+    <h2>What a job actually needs to do</h2>
     <p>
-      The dashboard is nice, but the change that mattered was moving from
-      "run at this time" to "run after these things are true." Airflow's
-      dependency graph meant a late upstream file delayed only what actually
-      depended on it, instead of an entire fixed schedule sliding or silently
-      running on stale data.
+      A single daily pipeline run isn't one step, even if it feels like one
+      script. In practice it's: confirm the source is ready, read the last
+      successful watermark, capture a fixed upper boundary for this run,
+      extract only the incremental slice, land it, validate it, route it to
+      either processing or quarantine, transform it, reconcile source counts
+      against what landed, and only then commit the new watermark. Cron can
+      trigger the first step. It has no concept of the other nine, which means
+      all that sequencing and error handling ends up hand-rolled inside the
+      script itself — and hidden from anyone who isn't reading the code.
     </p>
 
-    <h2>What improved measurably</h2>
+    <h2>The shift that mattered</h2>
+    <p>
+      Airflow's dependency graph made each of those steps a visible, individually
+      retryable task instead of a lump of logic inside one script. When the
+      transform step failed at 2am because an EMR step timed out, the DAG run
+      showed exactly which task failed — not "the job failed," but which of the
+      nine steps, with its own logs. Rerunning meant retrying that one task,
+      not re-extracting data that had already landed successfully. That's the
+      actual value: not the scheduling, but the fact that failure has a precise
+      location and a precise fix.
+    </p>
+
+    <h2>What showed up in day-to-day operation</h2>
     <ul>
-      <li>Fewer 2am pages for jobs that "ran" but processed incomplete data</li>
-      <li>Failures became visible per-task instead of buried in one script's log output</li>
-      <li>Retries and backfills stopped being manual, one-off scripts</li>
-      <li>New pipelines took hours to wire in, not days, since most sensors and operators were reusable</li>
+      <li>Backfills became a normal, supported operation instead of a manual script someone had to write under pressure</li>
+      <li>Retries with backoff were configuration, not something every script author had to remember to implement</li>
+      <li>A dependency graph made it obvious which downstream jobs a delayed upstream source would actually affect</li>
+      <li>SLA and failure alerting pointed at a specific task, not a generic "pipeline X failed" page at 2am</li>
     </ul>
 
-    <h2>What it costs you</h2>
+    <h2>Where cron is still the right answer</h2>
     <p>
-      Orchestration infrastructure is now a system you have to run and monitor
-      in its own right. For a handful of independent jobs with no real
-      dependencies, cron is still the right, boring answer. The switch pays
-      off specifically when job count and inter-dependency both grow past
-      what one person can hold in their head.
+      None of this is a reason to run Airflow for three independent jobs with
+      no shared dependencies — that's real infrastructure to operate (a
+      scheduler, a metadata database, workers) for a problem cron already
+      solves. The switch earns its cost specifically when job count and
+      inter-dependency both grow past what fits in one person's head, and when
+      "which task failed and what do I rerun" becomes a question you're
+      answering multiple times a week instead of once a quarter.
     </p>
   </div>
 </main>

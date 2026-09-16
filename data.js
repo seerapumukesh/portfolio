@@ -63,25 +63,25 @@ const PROJECTS = [
 
 const ARTICLES = [
   {
-    title: "SCD Type 2 is not enough: designing history that stands up to an audit",
+    title: "Designing Slowly Changing Dimensions that survive an audit",
     excerpt:
-      "An implementation-focused guide to historical data modeling in regulated systems — validity windows, late-arriving changes, source traceability, and the tests that prevent silent history errors.",
+      "Hash-based change detection, dbt snapshots vs. custom SCD logic, and why the watermark should only move after reconciliation passes.",
     date: "2026-03-01",
     tag: "Data Modeling",
     url: "articles/scd-that-survive-audits.html"
   },
   {
-    title: "Airflow versus cron: the operational shift that matters at 30+ daily jobs",
+    title: "Airflow vs. cron: what actually changes at scale",
     excerpt:
-      "The real value of orchestration is not scheduling. It's visible dependencies, dependable backfills, meaningful alerting, and a clearer operating model for data teams.",
+      "Cron starts a script. It doesn't model dependencies, retries, backfills, or SLAs. Here's what changed after moving 30+ daily jobs onto Airflow.",
     date: "2026-01-14",
     tag: "Orchestration",
     url: "articles/airflow-vs-cron.html"
   },
   {
-    title: "How we improved Snowflake query performance by 45%",
+    title: "Before you scale the warehouse, find out where the time actually goes",
     excerpt:
-      "A practical breakdown of warehouse sizing, clustering strategy, model design, and workload analysis — plus the trade-offs behind a measurable performance improvement.",
+      "A slow pipeline isn't a warehouse-sizing problem until you've measured where the runtime actually goes. A breakdown of the method and the fixes that followed.",
     date: "2026-05-10",
     tag: "Performance",
     url: "articles/snowflake-performance.html"
