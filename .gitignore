@@ -1,0 +1,5 @@
+node_modules/
+.vercel/
+preview.cjs
+update-pages.cjs
+verify.cjs

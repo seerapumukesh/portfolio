@@ -15,53 +15,31 @@
 <meta name="twitter:title" content="Projects — Mukesh Seerapu">
 <meta name="twitter:description" content="All data engineering projects by Mukesh Seerapu.">
 <meta name="twitter:image" content="og-image.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="portfolio.css"><link rel="icon" href="favicon.svg" type="image/svg+xml">
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-brand"><img src="profile.jpg" alt="" class="nav-brand-photo">Mukesh Seerapu</a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html#about">About</a>
-      <a href="index.html#architecture">Architecture</a>
-      <a href="index.html#projects">Projects</a>
-      <a href="index.html#experience">Experience</a>
-      <a href="index.html#skills">Skills</a>
-      <a href="index.html#blog">Engineering Playbook</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-    <a class="nav-resume" href="Mukesh_Seerapu_Data_Engineer.pdf" download>Resume</a>
-  </div>
-</header>
+<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">ms.</span>Mukesh Seerapu</a><nav class="main-nav" id="primary-nav" aria-label="Primary"><a href="index.html#projects">Work</a><a href="index.html#analytics">Analytics</a><a href="index.html#experience">Experience</a><a href="index.html#contact">Contact</a></nav><a class="resume-link" href="Mukesh_Seerapu_Data_Engineer.pdf" download>Résumé</a><button class="menu-toggle" id="navToggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">Menu</button></div></header>
 
-<main>
+<main id="main">
   <section class="listing-hero">
     <div class="wrap">
       <a href="index.html#projects" class="back-link">&#8592; Back to home</a>
       <h1>All projects</h1>
-      <p>Every data platform and pipeline project — production systems and personal builds.</p>
+      <p>Selected professional case studies in data platforms, analytics, and reporting.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="project-grid" id="projectGrid"><!-- injected by script.js, no limit --></div>
+      <div class="work-grid" id="work-grid"></div><p class="work-footnote">Generalized professional experience. Client datasets and proprietary source code are not published.</p>
     </div>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <p>&copy; <span id="year"></span> Mukesh Seerapu — Senior Data Engineer</p>
-    <a href="index.html" class="footer-top">&#8592; Home</a>
-  </div>
-</footer>
+<footer class="site-footer"><div class="wrap footer-inner"><p>© <span data-year>2026</span> Mukesh Seerapu · Data Engineering & Analytics</p><a href="index.html">Home</a></div></footer>
 
 <script src="data.js"></script>
-<script src="script.js"></script>
+<script src="legacy-content.js"></script><script src="site-content.js"></script><script src="portfolio.js"></script>
 </body>
 </html>
