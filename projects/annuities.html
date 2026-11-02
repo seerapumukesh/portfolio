@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reliable data for financial reporting — Mukesh Seerapu</title>
+<meta name="description" content="Moving annuity policy, premium, withdrawal, and valuation data processing to AWS, with reconciliation built into every workflow.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reliable data for financial reporting">
+<meta property="og:description" content="Moving annuity policy, premium, withdrawal, and valuation data processing to AWS, with reconciliation built into every workflow.">
+<meta property="og:image" content="../og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reliable data for financial reporting">
+<meta name="twitter:description" content="Moving annuity policy, premium, withdrawal, and valuation data processing to AWS, with reconciliation built into every workflow.">
+<meta name="twitter:image" content="../og-image.jpg">
+<link rel="stylesheet" href="../portfolio.css"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">ms.</span>Mukesh Seerapu</a><nav class="main-nav" id="primary-nav" aria-label="Primary"><a href="../index.html#projects">Work</a><a href="../index.html#analytics">Analytics</a><a href="../index.html#experience">Experience</a><a href="../index.html#contact">Contact</a></nav><button class="menu-toggle" id="navToggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">Menu</button></div></header>
+
+<main id="main" class="article-detail">
+  <a href="../index.html#projects" class="back-link">&#8592; Back to all work</a>
+  <span class="blog-tag">Financial services · AWS</span>
+  <h1>Reliable data for financial reporting</h1>
+  <p class="article-meta">Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      Annuity policy, premium, withdrawal, and valuation data is the kind of
+      data where "approximately right" isn't good enough — actuarial, finance,
+      and investment teams all need numbers that tie back exactly to source
+      systems. This data processing was running on on-prem infrastructure,
+      and the goal was to modernize it onto AWS without losing that precision
+      along the way.
+    </p>
+
+    <h2>What I built</h2>
+    <p>
+      Batch orchestration moved to Airflow, coordinating jobs across S3,
+      Redshift, DynamoDB, and RDS/PostgreSQL. Streaming ingestion moved from
+      Kafka to Kinesis — a deliberate trade, not a default choice — because it
+      fit the AWS operating model better and reduced the operational
+      complexity of running Kafka for a team not staffed to operate it.
+      Large-scale transformations ran on Spark via EMR, with Lambda handling
+      the lighter, event-driven processing that didn't need a full cluster.
+    </p>
+
+    <h2>Reconciliation as a first-class step</h2>
+    <p>
+      For actuarial and finance reporting, "the pipeline succeeded" isn't the
+      same as "the numbers are right." I built reusable Redshift views and
+      stored procedures for recurring reporting needs, with reconciliation
+      that could prove the warehouse matched the source system down to the
+      specific policy or transaction batch — not just a row count check, but
+      something an auditor could actually follow.
+    </p>
+
+    <h2>The result</h2>
+    <p>
+      An AWS-native batch and streaming platform with reduced operational
+      overhead, improved environment consistency, and reporting that finance
+      and actuarial teams could rely on without a manual reconciliation step
+      of their own.
+    </p>
+
+    <div class="tags"><span>AWS</span><span>Amazon Redshift</span><span>Apache Airflow</span><span>Amazon Kinesis</span><span>Spark on EMR</span><span>PostgreSQL (RDS)</span><span>DynamoDB</span></div>
+    <p class="evidence">Professional experience · Architecture summary; proprietary data and code are not published.</p>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="wrap footer-inner"><p>&copy; <span data-year>2026</span> Mukesh Seerapu &middot; Data Engineering &amp; Analytics</p><a href="../index.html">Home</a></div></footer>
+
+<script>document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>

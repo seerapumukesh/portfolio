@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One trusted view of banking data — Mukesh Seerapu</title>
+<meta name="description" content="How I consolidated 8+ source systems into one governed data platform with metadata-driven ingestion, tested dbt transformations, and recoverable pipeline runs.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="One trusted view of banking data">
+<meta property="og:description" content="How I consolidated 8+ source systems into one governed data platform with metadata-driven ingestion, tested dbt transformations, and recoverable pipeline runs.">
+<meta property="og:image" content="../og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="One trusted view of banking data">
+<meta name="twitter:description" content="How I consolidated 8+ source systems into one governed data platform with metadata-driven ingestion, tested dbt transformations, and recoverable pipeline runs.">
+<meta name="twitter:image" content="../og-image.jpg">
+<link rel="stylesheet" href="../portfolio.css"><link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">ms.</span>Mukesh Seerapu</a><nav class="main-nav" id="primary-nav" aria-label="Primary"><a href="../index.html#projects">Work</a><a href="../index.html#analytics">Analytics</a><a href="../index.html#experience">Experience</a><a href="../index.html#contact">Contact</a></nav><button class="menu-toggle" id="navToggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">Menu</button></div></header>
+
+<main id="main" class="article-detail">
+  <a href="../index.html#projects" class="back-link">&#8592; Back to all work</a>
+  <span class="blog-tag">Banking · Data platform</span>
+  <h1>One trusted view of banking data</h1>
+  <p class="article-meta">Mukesh Seerapu</p>
+
+  <div class="prose">
+    <p>
+      Core banking, lending, and member data lived in disconnected systems —
+      plus vendor files and REST APIs on top of that. Every team building a
+      report was starting from a slightly different version of the same
+      numbers, because there was no single place those numbers were reconciled
+      against each other. The goal wasn't just "move the data somewhere
+      central" — it was to make that central place something people could
+      actually trust.
+    </p>
+
+    <h2>What I built</h2>
+    <p>
+      I designed a metadata-driven ingestion framework so that onboarding a
+      new source meant adding configuration, not writing a new pipeline from
+      scratch. Azure Data Factory and Talend handled orchestration, raw data
+      landed in Azure Blob Storage as an immutable, replayable layer, and
+      Snowflake became the analytical warehouse. On top of that, dbt
+      organized every transformation into staging, intermediate, and mart
+      layers, with automated tests and lineage so a broken assumption showed
+      up as a failed test, not a wrong number three reports downstream.
+    </p>
+
+    <h2>Making it safe to fail</h2>
+    <p>
+      The part that mattered most in practice wasn't the happy path — it was
+      what happened when something went wrong mid-run. Every pipeline used
+      watermarks and run IDs so a failed job could restart without losing or
+      duplicating data, and reconciliation checks had to pass before a
+      watermark was allowed to advance. That combination meant a 2am failure
+      was a routine rerun, not an incident that needed someone to manually
+      figure out what state the data was left in.
+    </p>
+
+    <h2>The result</h2>
+    <p>
+      A centralized, governed warehouse with reusable source onboarding,
+      tested transformations, and traceable data flowing into downstream
+      reporting — 8+ source systems unified into one platform that teams
+      across the business could build on with a consistent set of
+      definitions.
+    </p>
+
+    <div class="tags"><span>Azure Data Factory</span><span>Talend</span><span>Snowflake</span><span>dbt</span><span>Azure Blob Storage</span><span>Python</span><span>Power BI</span></div>
+    <p class="evidence">Professional experience · Architecture summary; proprietary data and code are not published.</p>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="wrap footer-inner"><p>&copy; <span data-year>2026</span> Mukesh Seerapu &middot; Data Engineering &amp; Analytics</p><a href="../index.html">Home</a></div></footer>
+
+<script>document.querySelectorAll('[data-year]').forEach(el => el.textContent = new Date().getFullYear());</script>
+</body>
+</html>

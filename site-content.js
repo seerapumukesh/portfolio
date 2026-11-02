@@ -22,7 +22,7 @@ window.PORTFOLIO_REPORTS = [
 
 window.PORTFOLIO_WORK = [
   {
-    id: 'banking', category: 'engineering', number: '01', label: 'Banking · Data platform',
+    id: 'banking', url: 'projects/banking.html', category: 'engineering', number: '01', label: 'Banking · Data platform',
     title: 'One trusted view of banking data.',
     summary: 'Bringing core banking, lending, and member data together so reporting starts from a consistent foundation.',
     metric: '8+', metricLabel: 'source systems consolidated',
@@ -33,7 +33,7 @@ window.PORTFOLIO_WORK = [
     evidence: 'Professional experience · Architecture summary; proprietary data and code are not published.'
   },
   {
-    id: 'reporting', category: 'analytics', number: '02', label: 'Analytics · Business intelligence',
+    id: 'reporting', url: 'projects/reporting.html', category: 'analytics', number: '02', label: 'Analytics · Business intelligence',
     title: 'From recurring reports to usable answers.',
     summary: 'Power BI and Qlik Sense reporting that helps business teams work from shared data and spend less time preparing reports.',
     metric: '40+', metricLabel: 'business users supported',
@@ -44,7 +44,7 @@ window.PORTFOLIO_WORK = [
     evidence: 'Professional experience · Report data is proprietary; this is a delivery summary, not a public dashboard.'
   },
   {
-    id: 'annuities', category: 'engineering', number: '03', label: 'Financial services · AWS',
+    id: 'annuities', url: 'projects/annuities.html', category: 'engineering', number: '03', label: 'Financial services · AWS',
     title: 'Reliable data for financial reporting.',
     summary: 'An AWS data platform for annuity policy, premium, withdrawal, and valuation data, with reconciliation built into the workflow.',
     metric: '30+', metricLabel: 'daily batch jobs orchestrated',
@@ -55,7 +55,7 @@ window.PORTFOLIO_WORK = [
     evidence: 'Professional experience · Generalized architecture; no client datasets or source code are shared.'
   },
   {
-    id: 'lakehouse', category: 'engineering', number: '04', label: 'Cloud modernization · Azure',
+    id: 'lakehouse', url: 'projects/lakehouse.html', category: 'engineering', number: '04', label: 'Cloud modernization · Azure',
     title: 'A lakehouse built for consistent analytics.',
     summary: 'A layered data foundation that turns raw operational records into conformed datasets for BI and data science.',
     metric: '3', metricLabel: 'layers: Bronze, Silver, Gold',

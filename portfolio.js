@@ -6,7 +6,7 @@ if (workGrid) {
   workGrid.innerHTML = works.map(work => `<article class="work-card" data-category="${esc(work.category)}" id="${esc(work.id)}">
     <div class="work-visual visual-${esc(work.id)}"><span class="work-index">${esc(work.number)} / SELECTED WORK</span><strong>${esc(work.metric)}</strong><span>${esc(work.metricLabel)}</span><div class="visual-rule" aria-hidden="true"></div></div>
     <div class="work-body"><p class="eyebrow">${esc(work.label)}</p><h3>${esc(work.title)}</h3><p>${esc(work.summary)}</p><div class="tags">${work.stack.map(tag => `<span>${esc(tag)}</span>`).join('')}</div>
-    <details><summary>Explore case study<span aria-hidden="true">+</span></summary><div class="case-content"><h4>The business question</h4><p>${esc(work.question)}</p><h4>My approach</h4><p>${esc(work.approach)}</p><h4>The result</h4><p>${esc(work.result)}</p><p class="evidence">${esc(work.evidence)}</p></div></details></div></article>`).join('');
+    <details><summary>Explore case study<span aria-hidden="true">+</span></summary><div class="case-content"><h4>The business question</h4><p>${esc(work.question)}</p><h4>My approach</h4><p>${esc(work.approach)}</p><h4>The result</h4><p>${esc(work.result)}</p><p class="evidence">${esc(work.evidence)}</p>${work.url ? `<a class="text-link" href="${esc(work.url)}">Read the full case study &#8594;</a>` : ''}</div></details></div></article>`).join('');
   document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
     document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     let count = 0;
